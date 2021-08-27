@@ -1,4 +1,4 @@
-package Authentication;
+package Resource;
 
 
 /**
@@ -6,6 +6,6 @@ package Authentication;
  * @version 1.0
  * @created 25-Aug-2021 17:56:00
  */
-public interface ICredential {
+public interface ICar {
 
 }
