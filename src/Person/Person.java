@@ -12,6 +12,8 @@ public abstract class Person {
 
 	}
 
+
+
 	public void finalize() throws Throwable {
 
 	}

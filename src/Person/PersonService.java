@@ -7,7 +7,7 @@ package Person;
  * @created 25-Aug-2021 17:56:01
  */
 public class PersonService {
-
+	public PersonTyp personTyp;
 	public PersonFactory m_PersonFactory;
 
 	public PersonService(){
@@ -17,7 +17,9 @@ public class PersonService {
 	public void finalize() throws Throwable {
 
 	}
-	public boolean createPerson(){
+	public boolean createPerson(PersonTyp personTyp){
+
+		PersonFactory.createPerson(this.personTyp);
 		return false;
 	}
 }//end PersonService
