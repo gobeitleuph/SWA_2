@@ -21,6 +21,6 @@ public class AuthenticationService {
 	 * @param credential
 	 */
 	public boolean authenticateSubject(Subject subject, Credential credential){
-		return false;
+		return true;
 	}
 }//end AuthenticationService
