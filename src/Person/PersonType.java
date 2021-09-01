@@ -1,6 +1,6 @@
 package Person;
 
-public enum PersonTyp {
+public enum PersonType {
     LegalPerson,
     NaturalPerson
 }
