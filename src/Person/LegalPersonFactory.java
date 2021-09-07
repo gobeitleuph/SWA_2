@@ -15,8 +15,9 @@ public class LegalPersonFactory implements PersonFactory{
 	public void finalize() throws Throwable {
 		super.finalize();
 	}
-
+	@Override
 	public Person createPerson(){
+
 		return new LegalPerson();
 	}
 }//end LegalPersonFactory

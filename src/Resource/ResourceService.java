@@ -18,6 +18,7 @@ public class ResourceService {
 
 	}
 	public boolean getSelectedResource(){
-		return false;
+
+		return true;
 	}
 }//end ResourceService

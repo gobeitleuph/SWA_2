@@ -16,7 +16,9 @@ public class NaturalPersonFactory implements PersonFactory{
 		super.finalize();
 	}
 
+	@Override
 	public Person createPerson(){
+
 		return new NaturalPerson();
 	}
 }//end NaturalPersonFactory
