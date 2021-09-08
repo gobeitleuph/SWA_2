@@ -1,6 +1,9 @@
 package Booking;
 
 
+import Person.Person;
+import Resource.Resource;
+
 /**
  * @author leona
  * @version 1.0
@@ -8,10 +11,9 @@ package Booking;
  */
 public interface BookingBuilder {
 
-	public void createBody();
+	static void setHead(String head);
+	static void setBody(String body);
+	void setFooter(String footer);
 
-	public void createFooter();
-
-	public void createHeader();
 
 }

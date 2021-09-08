@@ -1,29 +1,28 @@
-//package Booking;
-//
-//
-///**
-// * @author leona
-// * @version 1.0
-// * @created 25-Aug-2021 17:56:00
-// */
-//public class EnglishBooking implements BookingBuilder {
-//
-//	public EnglishBooking(){
-//
-//	}
-//
-//	public void finalize() throws Throwable {
-//
-//	}
-//	public void createBody(){
-//
-//	}
-//
-//	public void createFooter(){
-//
-//	}
-//
-//	public void creatHeader(){
-//
-//	}
-//}//end EnglishBooking
+package Booking;
+
+
+/**
+ * @author leona
+ * @version 1.0
+ * @created 25-Aug-2021 17:56:00
+ */
+public class EnglishBooking {
+
+	private final String head;
+	private final String body;
+	private final String footer;
+
+	public EnglishBooking(String head, String footer, String body){
+		this.head=head;
+		this.body=body;
+		this.footer=footer;
+
+	}
+	public String print(){
+		String info = "";
+		info += "This is the Header:"+ head +"\n";
+		info += "This is the body:"+ body +"\n";
+		info += "This is the footer:"+ footer + "\n";
+		return info;
+	}
+}//end EnglishBooking
