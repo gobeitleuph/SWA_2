@@ -8,13 +8,27 @@ package Booking;
  */
 public class BookingDirector {
 
-	public BookingBuilder m_BookingBuilder;
+//	public void m_BookingBuilder;
 
 	public BookingDirector(){
 
 	}
 
 	public void finalize() throws Throwable {
+
+	}
+
+
+
+	public void createBooking(GermanBooking booking){
+		BookingBuilder.setHead("Deutsche Überschrift");
+		BookingBuilder.setBody("Deutscher Inhalt");
+
+	}
+
+	public void createBooking(EnglishBookingBuilder builder) {
+		BookingBuilder.setHead("Englische Überschrift");
+		BookingBuilder.setBody("EnglischerInhalt");
 
 	}
 }//end BookingDirector
