@@ -11,8 +11,8 @@ import Resource.Resource;
  */
 public interface BookingBuilder {
 
-	static void setHead(String head);
-	static void setBody(String body);
+	 void setHead(String head);
+	 void setBody(String body);
 	void setFooter(String footer);
 
 
