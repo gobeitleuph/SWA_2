@@ -21,4 +21,4 @@ public class NaturalPersonFactory implements PersonFactory{
 
 		return new NaturalPerson();
 	}
-}//end NaturalPersonFactory
+}

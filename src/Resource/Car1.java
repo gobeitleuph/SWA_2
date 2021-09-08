@@ -6,13 +6,13 @@ package Resource;
  * @version 1.0
  * @created 25-Aug-2021 17:56:00
  */
-public class CarDecorator {
+public class Car1 implements ICar{
 
-	public CarDecorator(){
+	public Car1(){
 
 	}
 
 	public void finalize() throws Throwable {
 
 	}
-}//end CarDecorator
+}//end Car

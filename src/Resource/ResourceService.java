@@ -1,6 +1,8 @@
 package Resource;
 
 
+import java.math.BigDecimal;
+
 /**
  * @author leona
  * @version 1.0
@@ -8,7 +10,7 @@ package Resource;
  */
 public class ResourceService {
 
-	public Car m_Car;
+	public Car1 m_Car;
 
 	public ResourceService(){
 
@@ -17,7 +19,10 @@ public class ResourceService {
 	public void finalize() throws Throwable {
 
 	}
-	public boolean getSelectedResource(){
+	public boolean getSelectedResource(String label, BigDecimal price,Boolean availability){
+
+
+
 
 		return true;
 	}

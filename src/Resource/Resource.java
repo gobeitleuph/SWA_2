@@ -6,13 +6,13 @@ package Resource;
  * @version 1.0
  * @created 25-Aug-2021 17:56:01
  */
-public class Resource extends Car {
+public abstract class Resource implements ICar {
 
-	public ICar m_ICar;
-	public Car m_Car;
+	protected ICar car;
 
-	public Resource(){
 
+	public Resource(ICar car){
+		this.car = car;
 	}
 
 	public void finalize() throws Throwable {
