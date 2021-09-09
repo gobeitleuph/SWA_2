@@ -38,8 +38,5 @@ class BookingDirectorTest {
     void createEnglishBooking() {
     }
 
-    void canPersonBeCreated(){
-        Assertions.assertTrue(personService.createPerson(personType, name, emailAddress, phoneNumber, credentialType, surname, birthday));
-    }
 
 }
