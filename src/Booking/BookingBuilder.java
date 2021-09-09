@@ -1,9 +1,6 @@
 package Booking;
 
 
-import Person.Person;
-import Resource.Resource;
-
 /**
  * @author leona
  * @version 1.0
