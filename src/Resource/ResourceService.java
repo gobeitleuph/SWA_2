@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public class ResourceService {
 
 	public Car m_Car;
-
+	private Resource combination;
 	public ResourceService(){
 
 	}
@@ -25,8 +25,16 @@ public class ResourceService {
 		car.setPrice(price);
 		car.setAvailability(availability);
 
-		Resource combination = new ChildSeat("comfortplus",new BigDecimal("300"),true,car);
+		combination = new ChildSeat("comfortplus",new BigDecimal("300"),true,car);
 		System.out.println(combination.getLabel() + combination.getPrice()+ combination.getAvailability());
 		return true;
 	}
+
+
+	public Resource getResource() {
+
+		return combination;
+	}
+
+
 }//end ResourceService

@@ -21,6 +21,11 @@ public class PersonService {
 	public void finalize() throws Throwable {
 
 	}
+
+	public Person getPerson() {
+		return person;
+	}
+
 	public boolean createPerson(PersonType personType, String name, String emailAddress, int phoneNumber, CredentialType credentialType, String surname, LocalDate birthday){
 
 		personFactory = PersonAbstractFactory.createPersonFactory(personType);
@@ -45,6 +50,8 @@ public class PersonService {
 		else{
 			return false;
 		}
+
+
 
 
 	}

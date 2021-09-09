@@ -1,5 +1,8 @@
 package Booking;
 
+import Person.*;
+import Resource.Resource;
+
 /**
  * @author leona
  * @version 1.0
@@ -7,25 +10,34 @@ package Booking;
  */
 public class BookingService {
 
+//	public void m_BookingBuilder;
 
-	public static void main(String[] args){
+	private Person person;
+	private Resource resource;
+	public BookingService(Person pers, Resource res){
+		this.person=pers;
+		this.resource=res;
 
-		BookingDirector bd1 = new BookingDirector();
+	}
 
-		EnglishBookingBuilder engbb = new EnglishBookingBuilder();
-
-		bd1.createEnglishBooking(engbb);
-
-		EnglishBooking engB = engbb.getResult();
-
-		System.out.println("\nEnglsih Booking built:\n" + engB.print());
-
+	public void finalize() throws Throwable {
 
 	}
 
 
 
+	public boolean createGermanBooking(BookingBuilder bookingBuilder){
+		bookingBuilder.setHead("Buchung von"+ person.getName());
+		bookingBuilder.setBody("Deutscher Inhalt"+resource.getLabel());
+		return true;
+	}
+
+	public boolean createEnglishBooking(BookingBuilder bookingBuilder) {
+		bookingBuilder.setHead("Englische Überschrift");
+		bookingBuilder.setBody("EnglischerInhalt");
+		return true;
+	}
 
 
 
-}//end BookingService
+}//end BookingDirector
