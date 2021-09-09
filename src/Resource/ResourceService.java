@@ -25,6 +25,8 @@ public class ResourceService {
 		car.setPrice(price);
 		car.setAvailability(availability);
 
+		Resource combination = new ChildSeat("comfortplus",new BigDecimal("300"),true,car);
+		System.out.println(combination.getLabel() + combination.getPrice()+ combination.getAvailability());
 		return true;
 	}
 }//end ResourceService
