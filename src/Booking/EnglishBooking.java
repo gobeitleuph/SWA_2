@@ -25,4 +25,7 @@ public class EnglishBooking {
 		info += "This is the footer:"+ footer + "\n";
 		return info;
 	}
+
+
+
 }//end EnglishBooking

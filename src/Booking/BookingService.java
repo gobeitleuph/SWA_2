@@ -1,6 +1,5 @@
 package Booking;
 
-
 /**
  * @author leona
  * @version 1.0
@@ -8,16 +7,25 @@ package Booking;
  */
 public class BookingService {
 
-	public BookingDirector m_BookingDirector;
 
-	public BookingService(){
+	public static void main(String[] args){
+
+		BookingDirector bd1 = new BookingDirector();
+
+		EnglishBookingBuilder engbb = new EnglishBookingBuilder();
+
+		bd1.createEnglishBooking(engbb);
+
+		EnglishBooking engB = engbb.getResult();
+
+		System.out.println("\nEnglsih Booking built:\n" + engB.print());
+
 
 	}
 
-	public void finalize() throws Throwable {
 
-	}
-	public boolean createBooking(){
-		return false;
-	}
+
+
+
+
 }//end BookingService

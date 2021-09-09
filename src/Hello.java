@@ -8,10 +8,6 @@ public class Hello {
     public static void main(String[] args) {
         System.out.println("hello");
         System.out.println("test1");
-        BookingDirector director = new BookingDirector();
-
-        EnglishBookingBuilder builder = new EnglishBookingBuilder();
-        director.createBooking(builder);
 
     }
 }

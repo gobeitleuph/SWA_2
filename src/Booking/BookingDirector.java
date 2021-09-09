@@ -20,15 +20,18 @@ public class BookingDirector {
 
 
 
-	public void createBooking(GermanBooking booking){
-		BookingBuilder.setHead("Deutsche Überschrift");
-		BookingBuilder.setBody("Deutscher Inhalt");
+	public boolean createGermanBooking(BookingBuilder bookingBuilder){
+		bookingBuilder.setHead("Deutsche Überschrift");
+		bookingBuilder.setBody("Deutscher Inhalt");
+		return true;
+	}
+
+	public void createEnglishBooking(BookingBuilder bookingBuilder) {
+		bookingBuilder.setHead("Englische Überschrift");
+		bookingBuilder.setBody("EnglischerInhalt");
 
 	}
 
-	public void createBooking(EnglishBookingBuilder builder) {
-		BookingBuilder.setHead("Englische Überschrift");
-		BookingBuilder.setBody("EnglischerInhalt");
 
-	}
+
 }//end BookingDirector

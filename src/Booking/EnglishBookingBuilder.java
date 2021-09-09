@@ -20,4 +20,10 @@ public class EnglishBookingBuilder implements BookingBuilder{
     public void setFooter(String footer) {
         this.footer=footer;
     }
+
+    public EnglishBooking getResult() {
+        return new EnglishBooking(head,body,footer);
+
+    }
+
 }
