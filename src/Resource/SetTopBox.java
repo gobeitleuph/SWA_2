@@ -8,14 +8,14 @@ import java.math.BigDecimal;
  * @version 1.0
  * @created 25-Aug-2021 17:56:01
  */
-public class SetTopBox extends Resource {
+public class SetTopBox extends Equipment {
 
 	private String label;
 	private BigDecimal price;
 	private Boolean availability;
 
-	public SetTopBox(String label, BigDecimal price, Boolean availability, ICar car){
-		super(car);
+	public SetTopBox(String label, BigDecimal price, Boolean availability, Resource resource){
+		super(resource);
 		this.label = label;
 		this.price = price;
 		this.availability = availability;
@@ -27,31 +27,31 @@ public class SetTopBox extends Resource {
 
 	@Override
 	public void setPrice(BigDecimal price) {
-
+		this.price = price;
 	}
 
 	@Override
 	public BigDecimal getPrice() {
-		return null;
+		return resource.getPrice().add(this.price) ;
 	}
 
 	@Override
 	public void setLabel(String label) {
-
+		this.label = label;
 	}
 
 	@Override
 	public String getLabel() {
-		return null;
+		return resource.getLabel() + "+" + this.label;
 	}
 
 	@Override
 	public void setAvailability(Boolean availability) {
-
+		this.availability = availability;
 	}
 
 	@Override
 	public Boolean getAvailability() {
-		return null;
+		return resource.getAvailability() & this.availability;
 	}
 }//end SetTopBox

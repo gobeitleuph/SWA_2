@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  */
 public class ResourceService {
 
-	public Car1 m_Car;
+	public Car m_Car;
 
 	public ResourceService(){
 
@@ -20,10 +20,13 @@ public class ResourceService {
 
 	}
 	public boolean getSelectedResource(String label, BigDecimal price,Boolean availability){
+		Resource car = new Car();
+		car.setLabel(label);
+		car.setPrice(price);
+		car.setAvailability(availability);
 
-
-
-
+		Resource combination = new ChildSeat("comfortplus",new BigDecimal("300"),true,car);
+		System.out.println(combination.getLabel() + combination.getPrice()+ combination.getAvailability());
 		return true;
 	}
 }//end ResourceService

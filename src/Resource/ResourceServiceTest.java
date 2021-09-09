@@ -1,19 +1,24 @@
 package Resource;
 
-import Person.Person;
 import org.junit.jupiter.api.*;
+import java.math.BigDecimal;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 
 class ResourceServiceTest {
-
+    private String label;
+    private BigDecimal price;
+    private Boolean availability;
     private ResourceService resourceService;
 
     @BeforeEach
     void setUp() {
         resourceService = new ResourceService();
+        label = "LabelTest";
+        price = new BigDecimal("100");
+        availability = true;
     }
+
 
     @AfterEach
     void tearDown() {
@@ -21,6 +26,6 @@ class ResourceServiceTest {
     @Test
     @Order(1)
     void canResourceBeGotten(){
-        Assertions.assertTrue(resourceService.getSelectedResource());
+        Assertions.assertTrue(resourceService.getSelectedResource(label,price,availability));
     }
 }

@@ -1,21 +1,18 @@
 package Resource;
 
 
+import java.math.BigDecimal;
+
 /**
  * @author leona
  * @version 1.0
- * @created 25-Aug-2021 17:56:01
+ * @created 25-Aug-2021 17:56:00
  */
-public abstract class Resource implements ICar {
-
-	protected ICar car;
-
-
-	public Resource(ICar car){
-		this.car = car;
-	}
-
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-}//end Resource
+public interface Resource {
+    void setPrice(BigDecimal price);
+    BigDecimal getPrice();
+    void setLabel(String label);
+    String getLabel();
+    void setAvailability(Boolean availability);
+    Boolean getAvailability();
+}
