@@ -19,7 +19,10 @@ public class EyeScanStrategy implements Credential {
 	}
 
 	@Override
-	public void executeStrategy(Person person) {
+	public void executeStrategy(Person person, String credentialIdentifierInput) {
+		if (person.getCredentialIdentifier() == credentialIdentifierInput){
+			System.out.printf("mach Auge");
+		}
 		//String Password = person.getCredentialIdentifier();
 	}
 }//end EyeScanStrategy

@@ -22,7 +22,7 @@ public class AuthenticationService {
 	 * @param person
 	 * @param //credential
 	 */
-	public boolean authenticateSubject(Person person){
+	public boolean authenticateSubject(Person person, String credentialIdentifierInput){
 		CredentialType credentialType = person.getCredentialType();
 		Credential credentialStrategy;
 		switch (credentialType){
@@ -41,9 +41,9 @@ public class AuthenticationService {
 				throw new IllegalStateException("Credential not known" + credentialType);
 		}
 
-		Subject subject = new Subject(credentialStrategy, person);
+		Subject subject = new Subject(credentialStrategy, person, credentialIdentifierInput);
 		subject.execute();
-		System.out.println();
+
 
 		return true;
 	}

@@ -9,5 +9,5 @@ import Person.Person;
  * @created 25-Aug-2021 17:56:00
  */
 public interface Credential {
-    void executeStrategy(Person person);
+    void executeStrategy(Person person, String credentialIdentifierInput);
 }

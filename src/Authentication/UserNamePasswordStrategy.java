@@ -19,7 +19,7 @@ public class UserNamePasswordStrategy implements Credential {
 	}
 
 	@Override
-	public void executeStrategy(Person person) {
+	public void executeStrategy(Person person, String credentialIdentifierInput) {
 
 	}
 }//end UserNamePasswordStrategy

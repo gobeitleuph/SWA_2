@@ -11,7 +11,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AuthenticationServiceTest {
     private AuthenticationService authenticationService;
-    private Person subject;
+    private Person person;
+    private String credentialIdentifierInput;
 
 
     @BeforeEach
@@ -19,8 +20,8 @@ class AuthenticationServiceTest {
         authenticationService = new AuthenticationService();
         PersonService personService = new PersonService();
         personService.createPerson(PersonType.LegalPerson, "Test", "hallo@test.com", 012711111111, CredentialType.EyeScanStrategy, "SurnameTest", LocalDate.of(200, 8, 12),"goodPassword");
-        subject = personService.getPerson();
-
+        person = personService.getPerson();
+        credentialIdentifierInput = "goodPassword";
 
     }
 
@@ -31,6 +32,6 @@ class AuthenticationServiceTest {
     @Test
     @Order(1)
     void canPersonBeAuthenticated(){
-        Assertions.assertTrue(authenticationService.authenticateSubject(subject));
+        Assertions.assertTrue(authenticationService.authenticateSubject(person, credentialIdentifierInput));
     }
 }
