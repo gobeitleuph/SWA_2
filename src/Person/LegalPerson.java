@@ -73,6 +73,16 @@ public class LegalPerson extends Person {
 	}
 
 	@Override
+	public String getCredentialIdentifier() {
+		return super.credentialIdentifier;
+	}
+
+	@Override
+	public void setCredentialIdentifier(String credentialIdentifier) {
+		this.credentialIdentifier = credentialIdentifier;
+	}
+
+	@Override
 	public boolean personCreated() {
 		return true;
 	}

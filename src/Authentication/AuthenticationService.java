@@ -1,6 +1,8 @@
 package Authentication;
 
 
+import Person.Person;
+
 /**
  * @author leona
  * @version 1.0
@@ -17,10 +19,32 @@ public class AuthenticationService {
 	}
 	/**
 	 * 
-	 * @param subject
-	 * @param credential
+	 * @param person
+	 * @param //credential
 	 */
-	public boolean authenticateSubject(Subject subject, Credential credential){
+	public boolean authenticateSubject(Person person){
+		CredentialType credentialType = person.getCredentialType();
+		Credential credentialStrategy;
+		switch (credentialType){
+			case UserNamePasswordStrategy: {
+				credentialStrategy = new UserNamePasswordStrategy();
+			}
+			case FingerPrintStrategy: {
+				credentialStrategy = new FingerPrintStrategy();
+			}
+			case EyeScanStrategy: {
+				credentialStrategy = new EyeScanStrategy();
+			}
+
+			break;
+			default:
+				throw new IllegalStateException("Credential not known" + credentialType);
+		}
+
+		Subject subject = new Subject(credentialStrategy, person);
+		subject.execute();
+		System.out.println();
+
 		return true;
 	}
 }//end AuthenticationService

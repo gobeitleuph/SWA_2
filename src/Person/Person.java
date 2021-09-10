@@ -18,10 +18,7 @@ public abstract class Person {
 	protected CredentialType credentialType;
 	protected String surname;
 	protected LocalDate birthday;
-
-	public Person(){
-
-	}
+	protected String credentialIdentifier;
 
 
 	public abstract String getName();
@@ -36,9 +33,14 @@ public abstract class Person {
 	public abstract void setSurname(String surname);
 	public abstract LocalDate getBirthday();
 	public abstract void setBirthday(LocalDate birthday);
+	public abstract String getCredentialIdentifier();
+	public abstract void setCredentialIdentifier(String credentialIdentifier);
 
 	public abstract boolean personCreated();
 
+	public Person(){
+
+	}
 
 
 

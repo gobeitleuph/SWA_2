@@ -3,7 +3,6 @@ package Person;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-import Authentication.Credential;
 import Authentication.CredentialType;
 import java.time.LocalDate;
 
@@ -20,6 +19,7 @@ class PersonServiceTest {
     private int year;
     private int month;
     private int day;
+    private String credentialIdentifier;
 
     @BeforeEach
     void setUp() throws Exception{
@@ -35,6 +35,7 @@ class PersonServiceTest {
         month = 9;
         day = 7;
         birthday = LocalDate.of(year, month, day);
+        credentialIdentifier = "goodPassword";
 
     }
 
@@ -45,6 +46,6 @@ class PersonServiceTest {
     @Test
     @Order(1)
     void canPersonBeCreated(){
-        Assertions.assertTrue(personService.createPerson(personType, name, emailAddress, phoneNumber, credentialType, surname, birthday));
+        Assertions.assertTrue(personService.createPerson(personType, name, emailAddress, phoneNumber, credentialType, surname, birthday, credentialIdentifier));
     }
 }
