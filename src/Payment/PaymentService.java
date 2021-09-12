@@ -1,12 +1,20 @@
 package Payment;
 
 
+import java.util.ArrayList;
+
 /**
  * @author leona
  * @version 1.0
  * @created 25-Aug-2021 17:56:01
  */
 public class PaymentService extends APaymentService {
+
+
+	private static ArrayList<Account> Account = new ArrayList<Account>();
+
+	private static final String FILE_NAME = "Konten.csv";
+
 
 	public PaymentService(){
 
