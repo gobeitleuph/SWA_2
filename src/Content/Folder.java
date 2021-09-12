@@ -1,6 +1,8 @@
 package Content;
 
 
+import Booking.Booking;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,5 +38,12 @@ public class Folder extends Content {
 	@Override
 	public String getName() {
 		return super.name;
+	}
+
+	//exception
+	@Override
+	public void setBooking(Booking booking) {
+
+
 	}
 }//end Folder

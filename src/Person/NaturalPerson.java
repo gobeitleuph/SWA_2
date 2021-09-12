@@ -2,6 +2,7 @@ package Person;
 
 
 import Authentication.CredentialType;
+import Payment.Account;
 
 import java.time.LocalDate;
 
@@ -82,6 +83,16 @@ public class NaturalPerson extends Person {
 	@Override
 	public void setCredentialIdentifier(String credentialIdentifier) {
 		this.credentialIdentifier = credentialIdentifier;
+	}
+
+	@Override
+	public Account getAccount() {
+		return super.account;
+	}
+
+	@Override
+	public void setAccount(Account account) {
+		this.account=account;
 	}
 
 	@Override

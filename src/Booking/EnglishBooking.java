@@ -6,11 +6,11 @@ package Booking;
  * @version 1.0
  * @created 25-Aug-2021 17:56:00
  */
-public class EnglishBooking {
+public class EnglishBooking extends Booking{
 
-	private final String head;
-	private final String body;
-	private final String footer;
+	private  String head;
+	private  String body;
+	private  String footer;
 
 	public EnglishBooking(String head, String footer, String body){
 		this.head=head;

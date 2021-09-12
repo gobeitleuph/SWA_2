@@ -1,5 +1,6 @@
 package Content;
 
+import Booking.Booking;
 import jdk.jshell.spi.SPIResolutionException;
 import org.junit.jupiter.api.*;
 
@@ -17,7 +18,7 @@ class ContentServiceTest {
     void setUp() {
         contentService = new ContentService();
         content = new File("TestFile");
-        content.setBooking();
+        content.setBooking(booking);
         name = "TestFolder";
         folder = new Folder(name);
     }

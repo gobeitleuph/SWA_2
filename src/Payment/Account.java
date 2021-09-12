@@ -1,29 +1,30 @@
 package Payment;
 
-import Payment.Transaktion;
+import Person.Person;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public abstract class Account {
+public class Account {
 
 	protected String Accountnummer;
-	protected String Inhaber;
+	protected Person Inhaber;
 	protected int Saldo;
 	protected LocalDate Eroeffnungsdatum;
-	protected ArrayList<Transaktion> Transaktionen;
+	protected ArrayList<Payment> Payment;
 
 
 	// Standardkonstruktor
-	public Account() {
+	public Account(Person pperson) {
+		this.Inhaber=pperson;
 		this.setEroeffnungsdatum();
 		this.setAccountnummer();
 		System.out.println("Account ["+ getAccountnummer() +"] erstellt.");
-		Transaktionen = new ArrayList<Transaktion>();
+		Payment = new ArrayList<Payment>();
 	}
 
 	// Standardkonstruktor mit Variablen
-	public Account(String pInhaber, double pSaldo) {
+	public Account(Person pInhaber, double pSaldo) {
 		this.setInhaber(pInhaber);
 		this.setAccountnummer();
 		this.setEroeffnungsdatum();
@@ -36,11 +37,11 @@ public abstract class Account {
 			this.setSaldo(pSaldo);
 		System.out.println("Account ["+ getAccountnummer() +"] mit Inhaber: " + getInhaber() + " erstellt.");
 		System.out.println("Aktueller Accountstand: " + getSaldo() + "€");
-		this.Transaktionen = new ArrayList<Transaktion>();
+		this.Payment = new ArrayList<Payment>();
 	}
 
 	// Konstruktor zum auslesen aus der Datei
-	public Account(String pAccountnummer, String pInhaber, double pSaldo, LocalDate pDatum) {
+	public Account(String pAccountnummer, Person pInhaber, double pSaldo, LocalDate pDatum) {
 		this.Accountnummer = pAccountnummer;
 		this.Inhaber = pInhaber;
 		setSaldo(pSaldo);
@@ -56,11 +57,11 @@ public abstract class Account {
 		this.Accountnummer = generateAccountnummer();
 	}
 
-	public String getInhaber() {
+	public Person getInhaber() {
 		return this.Inhaber;
 	}
 
-	public void setInhaber(String inhaber) {
+	public void setInhaber(Person inhaber) {
 		this.Inhaber = inhaber;
 	}
 
@@ -105,8 +106,8 @@ public abstract class Account {
 		System.out.println("+");
 		System.out.println("+");
 		// Durchlaufen wir alle Transaktionen
-		for(int i = 0; i < this.Transaktionen.size(); i++){
-			Transaktion lTrans = this.Transaktionen.get(i);
+		for(int i = 0; i < this.Payment.size(); i++){
+			Payment lTrans = this.Payment.get(i);
 			System.out.println("+	Überweisung: " + lTrans.getDate());
 			System.out.println("+	Empfänger  : " + lTrans.Receiver.getInhaber() + " [" + lTrans.Receiver.getAccountnummer() + "]");
 			System.out.println("+	Betrag     : " + lTrans.getValue());
@@ -127,8 +128,8 @@ public abstract class Account {
 		if(this.getSaldo() < 0)
 			System.out.println("Transaktion kann nicht durchgeführt werden, da der Saldo zu gering ist.");
 
-		Transaktion lTrans = new Transaktion(this, pReceiver, (int)Math.round(pValue*100));
-		this.Transaktionen.add(lTrans);
+		MobileMoneyWalletPayment lTrans = new MobileMoneyWalletPayment(this, pReceiver, (int)Math.round(pValue*100));
+		this.Payment.add(lTrans);
 		lTrans.Commit();
 	}
 

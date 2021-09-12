@@ -2,6 +2,7 @@ package Person;
 
 
 import Authentication.CredentialType;
+import Payment.Account;
 
 import java.time.LocalDate;
 
@@ -37,6 +38,9 @@ public class PersonService {
 			person.setSurname(surname);
 		}
 		person.setCredentialIdentifier(credentialIdentifier);
+		Account account = new Account(person);
+
+
 
 		if (person.personCreated()){
 			System.out.println("Person erstellt");

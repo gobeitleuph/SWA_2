@@ -1,6 +1,9 @@
 package Content;
 
 
+import Booking.Booking;
+import Payment.Payment;
+
 /**
  * @author leona
  * @version 1.0

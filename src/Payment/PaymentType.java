@@ -12,4 +12,5 @@ public enum PaymentType {
 	MobileMoneyWallet;
 
 	public PaymentService m_PaymentService;
+
 }

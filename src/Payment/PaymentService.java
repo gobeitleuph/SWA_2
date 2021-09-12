@@ -24,7 +24,10 @@ public class PaymentService extends APaymentService {
 		super.finalize();
 	}
 	protected void authenticate(){
+		Payment payment = new Payment(Account pSender, Account pReceiver) {
+		auth.authenticateSubject(Sender.getInhaber(), pcredent);
 
+		}
 	}
 
 	protected void confirmation(){

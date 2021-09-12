@@ -11,6 +11,6 @@ public interface BookingBuilder {
 	  void setHead(String head);
 	  void setBody(String body);
 	void setFooter(String footer);
-
+	
 
 }

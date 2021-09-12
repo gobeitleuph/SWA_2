@@ -2,6 +2,7 @@ package Person;
 
 
 import Authentication.CredentialType;
+import Payment.Account;
 
 import java.time.LocalDate;
 
@@ -19,6 +20,7 @@ public abstract class Person {
 	protected String surname;
 	protected LocalDate birthday;
 	protected String credentialIdentifier;
+	protected Account account;
 
 
 	public abstract String getName();
@@ -35,8 +37,11 @@ public abstract class Person {
 	public abstract void setBirthday(LocalDate birthday);
 	public abstract String getCredentialIdentifier();
 	public abstract void setCredentialIdentifier(String credentialIdentifier);
+	public abstract Account getAccount();
+	public abstract void setAccount(Account account);
 
 	public abstract boolean personCreated();
+
 
 	public Person(){
 
