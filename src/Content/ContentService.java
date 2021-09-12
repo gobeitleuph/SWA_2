@@ -16,7 +16,9 @@ public class ContentService {
 	 *
 	 * @param content
 	 */
-	public boolean addContent(Content content){
+	public boolean addContent(Content content, Folder folder){
+		folder.addContent(content);
+
 		return true;
 	}
 }//end ContentService
