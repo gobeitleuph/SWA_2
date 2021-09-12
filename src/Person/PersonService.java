@@ -18,15 +18,11 @@ public class PersonService {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
-
 	public Person getPerson() {
 		return person;
 	}
 
-	public boolean createPerson(PersonType personType, String name, String emailAddress, int phoneNumber, CredentialType credentialType, String surname, LocalDate birthday){
+	public boolean createPerson(PersonType personType, String name, String emailAddress, int phoneNumber, CredentialType credentialType, String surname, LocalDate birthday,String credentialIdentifier){
 
 		personFactory = PersonAbstractFactory.createPersonFactory(personType);
 		person = personFactory.createPerson();
@@ -40,6 +36,7 @@ public class PersonService {
 			person.setBirthday(birthday);
 			person.setSurname(surname);
 		}
+		person.setCredentialIdentifier(credentialIdentifier);
 
 		if (person.personCreated()){
 			System.out.println("Person erstellt");
@@ -53,6 +50,9 @@ public class PersonService {
 
 
 
+
+	}
+	public void finalize() throws Throwable {
 
 	}
 }

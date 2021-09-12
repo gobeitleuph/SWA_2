@@ -6,6 +6,7 @@ import Person.PersonType;
 import Resource.Resource;
 import Resource.ResourceService;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Hello {
@@ -29,6 +30,7 @@ public class Hello {
         int year;
         int month;
         int day;
+        String credentialIdentifier;
 
         personService = new PersonService();
         personType = PersonType.LegalPerson;
@@ -42,10 +44,11 @@ public class Hello {
         month = 9;
         day = 7;
         birthday = LocalDate.of(year, month, day);
+        credentialIdentifier = "goodPassword";
 
-        personService.createPerson(personType, name, emailAddress, phoneNumber, credentialType, surname, birthday);
+        personService.createPerson(personType, name, emailAddress, phoneNumber, credentialType, surname, birthday, credentialIdentifier);
 
-        personService.createPerson(PersonType.LegalPerson, "Test", "hallo@test.com", 012711111111, CredentialType.UserNamePasswordStrategy, "SurnameTest", LocalDate.of(200, 8, 12));
+        personService.createPerson(PersonType.LegalPerson, "Test", "hallo@test.com", 012711111111, CredentialType.UserNamePasswordStrategy, "SurnameTest", LocalDate.of(200, 8, 12), "goodPassword");
         Person ps1 = personService.getPerson();
 
         //////////////////////
@@ -54,7 +57,7 @@ public class Hello {
         //Resource
         ///////////////////
         ResourceService resourceService = new ResourceService();
-
+        resourceService.getSelectedResource("label",new BigDecimal("500"),true);
         Resource res1 = resourceService.getResource();
         /////////
 
