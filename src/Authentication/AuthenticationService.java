@@ -28,15 +28,18 @@ public class AuthenticationService {
 		switch (credentialType){
 			case UserNamePasswordStrategy: {
 				credentialStrategy = new UserNamePasswordStrategy();
+				break;
 			}
 			case FingerPrintStrategy: {
 				credentialStrategy = new FingerPrintStrategy();
+				break;
 			}
 			case EyeScanStrategy: {
 				credentialStrategy = new EyeScanStrategy();
+				break;
 			}
 
-			break;
+
 			default:
 				throw new IllegalStateException("Credential not known" + credentialType);
 		}

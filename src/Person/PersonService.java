@@ -39,6 +39,7 @@ public class PersonService {
 		}
 		person.setCredentialIdentifier(credentialIdentifier);
 		Account account = new Account(person);
+		person.setAccount(account);
 
 
 

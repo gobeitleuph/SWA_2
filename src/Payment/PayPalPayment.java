@@ -4,9 +4,17 @@ import java.time.LocalDateTime;
 
 public class PayPalPayment extends Payment{
 
-        public PayPalPayment(Account pSender, Account pReceiver, int pValue) {
+        protected Account Receiver;
+        protected Account Sender;
 
-                super(pSender, pReceiver, pValue);
+        public PayPalPayment(Account pSender, Account pReceiver, int pValue) {
+                this.Sender = pSender;
+                this.Receiver = pReceiver;
+                this.Value = pValue;
+
+
+
+
         }
 
 

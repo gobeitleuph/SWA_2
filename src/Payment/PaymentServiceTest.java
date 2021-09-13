@@ -4,9 +4,8 @@ import Authentication.CredentialType;
 import Person.Person;
 import Person.PersonService;
 import Person.PersonType;
-import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.*;
+
 
 import java.time.LocalDate;
 
@@ -19,11 +18,11 @@ class PaymentServiceTest {
     private Person ps2;
     private PaymentType type = PaymentType.PayPal;
     private String pcredentialIdentifierInput ="goodPassword";
-
+    PersonService personService;
     @BeforeEach
     void setUp() {
 
-        PersonService personService = new PersonService();
+        personService = new PersonService();
 
         personService.createPerson(PersonType.LegalPerson, "Test", "hallo@test.com", 012711111111, CredentialType.UserNamePasswordStrategy, "SurnameTest", LocalDate.of(200, 8, 12),"goodPassword");
         ps1 = personService.getPerson();

@@ -29,12 +29,7 @@ public class Account {
 		this.setAccountnummer();
 		this.setEroeffnungsdatum();
 		// negativen Saldo dürfen wir nicht haben
-		if(pSaldo < 0) {
-			System.out.println("Negativer Saldo nicht möglich!");
-			this.setSaldo(0);
-		}
-		else
-			this.setSaldo(pSaldo);
+		Saldo=0;
 		System.out.println("Account ["+ getAccountnummer() +"] mit Inhaber: " + getInhaber() + " erstellt.");
 		System.out.println("Aktueller Accountstand: " + getSaldo() + "€");
 		this.Payment = new ArrayList<Payment>();

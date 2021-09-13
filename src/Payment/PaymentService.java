@@ -66,15 +66,17 @@ public class PaymentService {
 
 			case PayPal :{
 				payWithPaypal(pSenderperson, pReceiver, pvalue, pcredentialIdentifierInput);
+				break;
 			}
 
 			case GoogleWallet:{
 				payWithGoogle(pSenderperson, pReceiver, pvalue, pcredentialIdentifierInput);
+				break;
 			}
 
 			case MobileMoneyWallet:{
 				payWithMobile(pSenderperson, pReceiver, pvalue, pcredentialIdentifierInput);
-
+				break;
 			}
 
 		}

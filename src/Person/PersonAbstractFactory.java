@@ -23,9 +23,11 @@ public abstract class PersonAbstractFactory {
 		switch (personType){
 			case LegalPerson: {
 				personFactory = new LegalPersonFactory();
+				break;
 			}
 			case NaturalPerson: {
 				personFactory = new NaturalPersonFactory();
+				break;
 			}
 
 		}

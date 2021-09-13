@@ -5,8 +5,9 @@ import java.time.LocalDateTime;
 public class GoogleWalletPayment extends Payment{
 
     public GoogleWalletPayment(Account pSender, Account pReceiver, int pValue) {
-
-        super(pSender, pReceiver, pValue);
+        this.Sender = pSender;
+        this.Receiver = pReceiver;
+        this.Value = pValue;
     }
 
     @Override

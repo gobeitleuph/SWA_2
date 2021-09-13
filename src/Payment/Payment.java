@@ -21,10 +21,8 @@ public abstract class Payment {
 
 
 
-    public Payment(Account pSender, Account pReceiver, int pValue) {
-        this.Sender = pSender;
-        this.Receiver = pReceiver;
-        this.Value = pValue;
+    public Payment() {
+
         auth = new AuthenticationService();
 
 
