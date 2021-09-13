@@ -33,8 +33,9 @@ public class BookingService {
 	}
 
 	public boolean createEnglishBooking(BookingBuilder bookingBuilder) {
-		bookingBuilder.setHead("Englische Überschrift");
+		bookingBuilder.setHead("Booking of"+ person.getName());
 		bookingBuilder.setBody("EnglischerInhalt");
+		bookingBuilder.setFooter(resource.getLabel());
 		return true;
 	}
 

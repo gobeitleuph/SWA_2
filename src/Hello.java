@@ -1,5 +1,6 @@
 import Authentication.CredentialType;
 import Booking.*;
+import Payment.PaymentService;
 import Person.Person;
 import Person.PersonService;
 import Person.PersonType;
@@ -50,6 +51,12 @@ public class Hello {
 
         personService.createPerson(PersonType.LegalPerson, "Test", "hallo@test.com", 012711111111, CredentialType.UserNamePasswordStrategy, "SurnameTest", LocalDate.of(200, 8, 12), "goodPassword");
         Person ps1 = personService.getPerson();
+
+        personService.createPerson(PersonType.LegalPerson, "Test2", "hallo2@test.com", 22222222, CredentialType.UserNamePasswordStrategy, "SurnameTest2", LocalDate.of(200, 8, 12),"goodPassword");
+
+        Person ps2 = personService.getPerson();
+
+        PaymentService pms = new PaymentService();
 
         //////////////////////
         // Person
