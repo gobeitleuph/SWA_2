@@ -1,6 +1,8 @@
 package Payment;
 
 
+import Person.Person;
+
 import java.util.ArrayList;
 
 /**
@@ -8,7 +10,7 @@ import java.util.ArrayList;
  * @version 1.0
  * @created 25-Aug-2021 17:56:01
  */
-public class PaymentService extends APaymentService {
+public class PaymentService {
 
 
 	private static ArrayList<Account> Account = new ArrayList<Account>();
@@ -23,19 +25,62 @@ public class PaymentService extends APaymentService {
 	public void finalize() throws Throwable {
 		super.finalize();
 	}
-	protected void authenticate(){
-		Payment payment = new Payment(Account pSender, Account pReceiver) {
-		auth.authenticateSubject(Sender.getInhaber(), pcredent);
+//	public void payWithPaypal(Person pSenderperson, Person pReceiver){
+//
+//		Payment payment = new PayPalPayment(pSenderperson.getAccount(), pReceiver.getAccount())
+//
+//
+//
+//			}
+//			auth.authenticateSubject(Sender.getInhaber(), pcredent);
 
-		}
+	public void payWithPaypal(Person pSenderperson, Person pReceiver, int pvalue, String pcredentialIdentifierInput){
+		Payment payment = new PayPalPayment(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
+		payment.auth.authenticateSubject(pSenderperson, pcredentialIdentifierInput);
+		payment.Commit();
+
+
 	}
+
+	public void payWithGoogle(Person pSenderperson, Person pReceiver, int pvalue, String pcredentialIdentifierInput){
+		Payment payment = new GoogleWalletPayment(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
+		payment.auth.authenticateSubject(pSenderperson, pcredentialIdentifierInput);
+		payment.Commit();
+
+	}
+
+	public void payWithMobile(Person pSenderperson, Person pReceiver, int pvalue, String pcredentialIdentifierInput){
+		Payment payment = new PayPalPayment(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
+		payment.auth.authenticateSubject(pSenderperson, pcredentialIdentifierInput);
+		payment.Commit();
+
+	}
+
 
 	protected void confirmation(){
 
 	}
 
-	public boolean payAmount(){
-		return false;
+	public boolean payAmount(PaymentType ptype,Person pSenderperson, Person pReceiver, int pvalue, String pcredentialIdentifierInput){
+		switch (ptype){
+
+			case PayPal :{
+				payWithPaypal(pSenderperson, pReceiver, pvalue, pcredentialIdentifierInput);
+			}
+
+			case GoogleWallet:{
+				payWithGoogle(pSenderperson, pReceiver, pvalue, pcredentialIdentifierInput);
+			}
+
+			case MobileMoneyWallet:{
+				payWithMobile(pSenderperson, pReceiver, pvalue, pcredentialIdentifierInput);
+
+			}
+
+		}
+
+
+		return true;
 	}
 
 	protected void transact(){

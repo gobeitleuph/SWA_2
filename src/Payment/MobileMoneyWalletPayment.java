@@ -16,7 +16,7 @@ public class MobileMoneyWalletPayment extends Payment{
                 this.Date = LocalDateTime.now();
                 Sender.Saldo = Sender.Saldo - Value;
                 Receiver.Saldo = Receiver.Saldo + Value;
-                System.out.println("Überweisung wurde um " + getDate() + " ausgeführt.");
+                System.out.println("Bezahlung wurde mit MobileMoneyWalletPayment am " + getDate() + " ausgeführt.");
                 System.out.println("Neuer Kontostand: " + Sender.getSaldo() + "€");
 
             return true;

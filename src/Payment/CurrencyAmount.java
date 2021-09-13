@@ -10,6 +10,8 @@ public class CurrencyAmount {
 
 	public PaymentService m_PaymentService;
 
+	public int amount;
+
 	public CurrencyAmount(){
 
 	}

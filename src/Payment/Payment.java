@@ -10,7 +10,8 @@ public abstract class Payment {
     protected LocalDateTime Date;
     protected Account Receiver;
     protected Account Sender;
-    protected int Value;
+    protected CurrencyAmount cvalue = new CurrencyAmount();
+    int Value = cvalue.amount;
     AuthenticationService auth;
     String pcredent;
 
