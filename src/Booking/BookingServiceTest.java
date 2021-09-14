@@ -19,7 +19,7 @@ class BookingServiceTest {
 
 
     private BookingService bd1;
-    private EnglishBookingBuilder engbb;
+    //private EnglishBookingBuilder engbb;
     private ResourceSelection car;
     ResourceSelection res1;
 
@@ -44,9 +44,6 @@ class BookingServiceTest {
 
         bd1 = new BookingService(ps1,res1);
 
-
-
-
     }
 
     @Test
@@ -54,20 +51,13 @@ class BookingServiceTest {
     }
 
 
-
     @Test
     void createEnglishBooking() {
 
         Assertions.assertTrue(bd1.createBooking(BookingType.GermanBooking));
+        String temp = bd1.getBooking().print();
+        System.out.println(temp);
 
     }
-
-    @AfterEach
-    void tearDown() {
-        System.out.println(bd1.getBooking());
-    }
-
-
-
 
 }

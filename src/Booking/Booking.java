@@ -8,6 +8,7 @@ public abstract class Booking {
     
     private String all;
 
+    public abstract String print();
 }
 
 

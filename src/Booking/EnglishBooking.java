@@ -20,9 +20,9 @@ public class EnglishBooking extends Booking{
 	}
 	public String print(){
 		String info = "";
-		info += "This is the Header:"+ head +"\n";
-		info += "This is the body:"+ body +"\n";
-		info += "This is the footer:"+ footer + "\n";
+		info += "This is the Header:"+ head +"";
+		info += "This is the body:"+ body +"";
+		info += "This is the footer:"+ footer + "";
 		return info;
 	}
 
