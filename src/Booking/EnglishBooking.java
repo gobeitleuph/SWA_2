@@ -12,7 +12,7 @@ public class EnglishBooking extends Booking{
 	private  String body;
 	private  String footer;
 
-	public EnglishBooking(String head, String footer, String body){
+	public EnglishBooking(String head, String body, String footer){
 		this.head=head;
 		this.body=body;
 		this.footer=footer;

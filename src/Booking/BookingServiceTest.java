@@ -6,9 +6,11 @@ import Person.PersonService;
 import Person.PersonType;
 import Resource.*;
 import Resource.ResourceService;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.platform.engine.support.descriptor.FileSystemSource;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -19,6 +21,7 @@ class BookingServiceTest {
     private BookingService bd1;
     private EnglishBookingBuilder engbb;
     private ResourceSelection car;
+    ResourceSelection res1;
 
     @BeforeEach
     void setUp() throws Exception{
@@ -34,17 +37,15 @@ class BookingServiceTest {
         car.setPrice(new BigDecimal("100"));
         car.setAvailability(true);
         ResourceService resourceService = new ResourceService();
-        ResourceSelection res1 = resourceService.getResource();
         resourceService.getSelectedResource("label",new BigDecimal("500"),true, car);
+        res1 = resourceService.getResource();
+
         ///////
 
         bd1 = new BookingService(ps1,res1);
 
-        engbb = new EnglishBookingBuilder();
 
-        bd1.createEnglishBooking(engbb);
 
-        EnglishBooking engB = engbb.getResult();
 
     }
 
@@ -57,8 +58,13 @@ class BookingServiceTest {
     @Test
     void createEnglishBooking() {
 
-        Assertions.assertTrue(bd1.createEnglishBooking(engbb));
+        Assertions.assertTrue(bd1.createBooking(BookingType.GermanBooking));
 
+    }
+
+    @AfterEach
+    void tearDown() {
+        System.out.println(bd1.getBooking());
     }
 
 

@@ -1,6 +1,8 @@
 package Booking;
 
-public class EnglishBookingBuilder implements BookingBuilder{
+public class GermanBookingBuilder implements BookingBuilder {
+
+
     private String footer;
     private String head;
     private String body;
@@ -22,9 +24,8 @@ public class EnglishBookingBuilder implements BookingBuilder{
     }
 
     @Override
-    public EnglishBooking getResult() {
-        return new EnglishBooking(head,body,footer);
+    public GermanBooking getResult() {
+        return new GermanBooking(head,body,footer);
 
     }
-
 }
