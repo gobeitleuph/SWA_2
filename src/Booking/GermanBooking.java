@@ -18,11 +18,7 @@ public class GermanBooking extends Booking{
         this.body=body;
         this.footer=footer;
 
-        String info = "";
-        info += "Das ist der Header:"+ head +"\n";
-        info += "Das ist der body:"+ body +"\n";
-        info += "Das ist der footer:"+ footer + "\n";
-        all=info;
+
 
     }
     public String print(){
@@ -36,4 +32,4 @@ public class GermanBooking extends Booking{
     public String getAll() {
         return all;
     }
-}//end EnglishBooking
+}

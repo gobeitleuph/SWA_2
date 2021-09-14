@@ -18,6 +18,8 @@ class BookingServiceTest {
 
     BookingService bd1;
     EnglishBookingBuilder engbb;
+    Resource res1;
+    ResourceService resourceService;
     @BeforeEach
     void setUp() throws Exception{
 
@@ -33,11 +35,13 @@ class BookingServiceTest {
         ///Person
         ///////////
         //Resource
-        ResourceService resourceService = new ResourceService();
+        resourceService = new ResourceService();
 
-        Resource res1 = resourceService.getResource();
 
         resourceService.getSelectedResource("label",new BigDecimal("500"),true);
+
+        res1 = resourceService.getResource();
+
         //////////////
 
         bd1 = new BookingService(ps1,res1);
@@ -47,6 +51,8 @@ class BookingServiceTest {
         bd1.createEnglishBooking(engbb);
 
         EnglishBooking engB = engbb.getResult();
+
+        System.out.println(engB.print());
 
     }
 

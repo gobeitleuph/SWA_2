@@ -35,7 +35,7 @@ public class BookingService {
 	public boolean createEnglishBooking(BookingBuilder bookingBuilder) {
 		bookingBuilder.setHead("Booking of"+ person.getName());
 		bookingBuilder.setBody("EnglischerInhalt");
-		bookingBuilder.setFooter(resource.getLabel());
+		bookingBuilder.setFooter("Regards "+ resource.getLabel());
 		return true;
 	}
 
