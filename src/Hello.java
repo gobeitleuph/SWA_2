@@ -2,13 +2,13 @@ import Authentication.CredentialType;
 import Booking.*;
 import Payment.PaymentService;
 import Person.Person;
-import Person.PersonService;
 import Person.PersonType;
-import Resource.Resource;
-import Resource.ResourceService;
+import Resource.Car;
+import Resource.ResourceSelection;
 import ViewController.CommandController;
 import ViewController.CommandExecutor;
 import ViewController.PersonController;
+import ViewController.ResourceController;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -49,32 +49,42 @@ public class Hello {
         Person pers1 = ((PersonController) perscon1).getPerson();
         commandExecutor.executeCommand("createPerson", new PersonController(PersonType.LegalPerson, "Test", "hallo@test.com", 012711111111, CredentialType.UserNamePasswordStrategy, "SurnameTest", LocalDate.of(200, 8, 12), "goodPassword"));
 
-
-
         ////////////////////Person End////////////////////
 
+        ////////////////////Resource////////////////////
+        String carLabel = "Carname";
+        BigDecimal carprice = new BigDecimal("500");
+        Boolean carAvailability = true;
+
+        ResourceSelection car;
+        car = new Car();
+        car.setLabel(carLabel);
+        car.setPrice(carprice);
+        car.setAvailability(carAvailability);
+        CommandController rescon1 = new ResourceController(car);
+        //commandExecutor.executeCommand("createResourceCar",rescon1);
+        //ResourceSelection car1 = ((ResourceController) rescon1).getCar();
+        commandExecutor.executeCommand("selectResourceChildSeat",rescon1);
+        ResourceSelection res1 = ((ResourceController) rescon1).getCombination();
+        CommandController rescon2 = new ResourceController(res1);
+        commandExecutor.executeCommand("selectResourceSetTopBox",rescon2);
+        ResourceSelection res2 = ((ResourceController) rescon2).getCombination();
+        System.out.println(res1.getLabel());
+        System.out.println(res1.getPrice());
+        System.out.println(res2.getLabel());
+        System.out.println(res2.getPrice());
 
 
 
+        ////////////////////Resource End////////////////////
 
-
-        //Person ps1 = personService.getPerson();
-
-        //personService.createPerson(PersonType.LegalPerson, "Test2", "hallo2@test.com", 22222222, CredentialType.UserNamePasswordStrategy, "SurnameTest2", LocalDate.of(200, 8, 12),"goodPassword");
-
-        //Person ps2 = personService.getPerson();
 
         PaymentService pms = new PaymentService();
 
         //////////////////////
         // Person
 
-        //Resource
-        ///////////////////
-        ResourceService resourceService = new ResourceService();
-        resourceService.getSelectedResource("label",new BigDecimal("500"),true);
-        Resource res1 = resourceService.getResource();
-        /////////
+
 
         BookingService bd1 = new BookingService(pers1,res1);
 

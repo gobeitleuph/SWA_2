@@ -8,15 +8,15 @@ import Person.PersonType;
 import java.time.LocalDate;
 
 public class PersonController implements CommandController{
-    protected PersonType personType;
-    protected String name;
-    protected String emailAddress;
-    protected int phoneNumber;
-    protected CredentialType credentialType;
-    protected String surname;
-    protected LocalDate birthday;
-    protected String credentialIdentifier;
-    protected Person person;
+    private PersonType personType;
+    private String name;
+    private String emailAddress;
+    private int phoneNumber;
+    private CredentialType credentialType;
+    private String surname;
+    private LocalDate birthday;
+    private String credentialIdentifier;
+    private Person person;
 
     public PersonController(PersonType personType, String name, String emailAddress, int phoneNumber, CredentialType credentialType, String surname, LocalDate birthday, String credentialIdentifier) {
         this.personType = personType;

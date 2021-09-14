@@ -8,13 +8,13 @@ import java.math.BigDecimal;
  * @version 1.0
  * @created 25-Aug-2021 17:56:01
  */
-public class SetTopBox extends Equipment {
+public class SetTopBox extends Resource {
 
 	private String label;
 	private BigDecimal price;
 	private Boolean availability;
 
-	public SetTopBox(String label, BigDecimal price, Boolean availability, Resource resource){
+	public SetTopBox(String label, BigDecimal price, Boolean availability, ResourceSelection resource){
 		super(resource);
 		this.label = label;
 		this.price = price;
