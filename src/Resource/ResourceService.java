@@ -19,9 +19,8 @@ public class ResourceService {
 
 	}
 	public boolean getSelectedResource(String label, BigDecimal price,Boolean availability, ResourceSelection car){
-
 		combination = new ChildSeat(label,price,availability,car);
-		System.out.println(combination.getLabel() + combination.getPrice()+ combination.getAvailability());
+		//System.out.println(combination.getLabel() + combination.getPrice()+ combination.getAvailability());
 		return true;
 	}
 
