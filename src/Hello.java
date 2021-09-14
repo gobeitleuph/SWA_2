@@ -6,6 +6,9 @@ import Person.PersonService;
 import Person.PersonType;
 import Resource.Resource;
 import Resource.ResourceService;
+import ViewController.CommandController;
+import ViewController.CommandExecutor;
+import ViewController.PersonController;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -15,14 +18,9 @@ public class Hello {
 
 
     public static void main(String[] args) {
-        System.out.println("hello");
-        System.out.println("test1");
-// Person
-        ////////////////////
+        ////////////////////Person////////////////////
         CredentialType credentialType;
-        PersonService personService;
         PersonType personType;
-
         String name;
         String emailAddress;
         int phoneNumber;
@@ -33,9 +31,7 @@ public class Hello {
         int day;
         String credentialIdentifier;
 
-        personService = new PersonService();
         personType = PersonType.LegalPerson;
-
         name = "Test";
         emailAddress = "hallo@test.com";
         phoneNumber = 012711111111;
@@ -47,14 +43,26 @@ public class Hello {
         birthday = LocalDate.of(year, month, day);
         credentialIdentifier = "goodPassword";
 
-        personService.createPerson(personType, name, emailAddress, phoneNumber, credentialType, surname, birthday, credentialIdentifier);
+        CommandExecutor commandExecutor = new CommandExecutor();
+        CommandController perscon1 = new PersonController(personType, name, emailAddress, phoneNumber, credentialType, surname, birthday, credentialIdentifier);
+        commandExecutor.executeCommand("createPerson", perscon1);
+        Person pers1 = ((PersonController) perscon1).getPerson();
+        commandExecutor.executeCommand("createPerson", new PersonController(PersonType.LegalPerson, "Test", "hallo@test.com", 012711111111, CredentialType.UserNamePasswordStrategy, "SurnameTest", LocalDate.of(200, 8, 12), "goodPassword"));
 
-        personService.createPerson(PersonType.LegalPerson, "Test", "hallo@test.com", 012711111111, CredentialType.UserNamePasswordStrategy, "SurnameTest", LocalDate.of(200, 8, 12), "goodPassword");
-        Person ps1 = personService.getPerson();
 
-        personService.createPerson(PersonType.LegalPerson, "Test2", "hallo2@test.com", 22222222, CredentialType.UserNamePasswordStrategy, "SurnameTest2", LocalDate.of(200, 8, 12),"goodPassword");
 
-        Person ps2 = personService.getPerson();
+        ////////////////////Person End////////////////////
+
+
+
+
+
+
+        //Person ps1 = personService.getPerson();
+
+        //personService.createPerson(PersonType.LegalPerson, "Test2", "hallo2@test.com", 22222222, CredentialType.UserNamePasswordStrategy, "SurnameTest2", LocalDate.of(200, 8, 12),"goodPassword");
+
+        //Person ps2 = personService.getPerson();
 
         PaymentService pms = new PaymentService();
 
@@ -68,7 +76,7 @@ public class Hello {
         Resource res1 = resourceService.getResource();
         /////////
 
-        BookingService bd1 = new BookingService(ps1,res1);
+        BookingService bd1 = new BookingService(pers1,res1);
 
         EnglishBookingBuilder engbb = new EnglishBookingBuilder();
 

@@ -92,7 +92,7 @@ public class NaturalPerson extends Person {
 
 	@Override
 	public void setAccount(Account account) {
-		this.account=account;
+		this.account = account;
 	}
 
 	@Override
