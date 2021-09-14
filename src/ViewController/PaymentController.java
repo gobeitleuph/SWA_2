@@ -27,7 +27,7 @@ public class PaymentController implements CommandController{
             case "transactPayment":{
                 PaymentService paymentService = new PaymentService();
                 paymentService.payAmount(paymentType, personSender, personReceiver, value, credentialIdentifierInput);
-                //this.payment =
+
                 break;
             }
         }

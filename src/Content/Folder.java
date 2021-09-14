@@ -17,7 +17,7 @@ public class Folder extends Content {
 	private List<Content> folderContentList;
 
 	public Folder(String name){
-		this.name = name;
+		super(name);
 		this.folderContentList = new ArrayList<>();
 	}
 
@@ -40,10 +40,9 @@ public class Folder extends Content {
 		return super.name;
 	}
 
-	//exception
-	@Override
-	public void setBooking(Booking booking) {
-
-
+	public List<Content> getFolderContentList(){
+		return folderContentList;
 	}
+
+
 }//end Folder

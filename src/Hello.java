@@ -1,5 +1,8 @@
 import Authentication.CredentialType;
 import Booking.*;
+import Content.Content;
+import Content.File;
+import Content.Folder;
 import Payment.PaymentService;
 import Payment.PaymentType;
 import Person.Person;
@@ -10,6 +13,7 @@ import ViewController.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Hello {
 
@@ -87,17 +91,25 @@ public class Hello {
         paymentType = PaymentType.PayPal;
         personSender = pers1;
         personReceiver = pers2;
-        value = 100;
+        value = 500;
         credentialIdentifierInput = "goodPassword";
 
         CommandController paycon1 = new PaymentController(paymentType, personSender, personReceiver, value, credentialIdentifierInput);
         commandExecutor.executeCommand("transactPayment",paycon1);
 
-
-
-
         ////////////////////Payment End////////////////////
 
+        ////////////////////Content////////////////////
+        Folder folder1 = new Folder("TestFolder");
+        File file1 = new File("TestFile");
+        //File kann Payment und Booking zugewiesen werden
+        CommandController contcon1 = new ContentController(file1, folder1);
+        commandExecutor.executeCommand("addContentToFolder",contcon1);
+        Content fold1 = ((ContentController) contcon1).getFolder();
+        System.out.println(fold1.getName());
+        List<Content> folde1list = ((Folder)fold1).getFolderContentList();
+
+        ////////////////////Content End////////////////////
 
         BookingService bd1 = new BookingService(pers1,res1);
 

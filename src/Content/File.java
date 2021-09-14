@@ -16,7 +16,7 @@ public class File extends Content {
 	private Payment payment;
 
 	public File(String name){
-		this.name = name;
+		super(name);
 	}
 
 	public void setBooking (Booking booking){

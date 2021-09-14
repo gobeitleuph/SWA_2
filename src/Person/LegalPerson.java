@@ -102,7 +102,4 @@ public class LegalPerson extends Person {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 }//end LegalPerson
