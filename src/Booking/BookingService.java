@@ -1,7 +1,7 @@
 package Booking;
 
 import Person.*;
-import Resource.Resource;
+import Resource.ResourceSelection;
 
 /**
  * @author leona
@@ -13,8 +13,8 @@ public class BookingService {
 //	public void m_BookingBuilder;
 
 	private Person person;
-	private Resource resource;
-	public BookingService(Person pers, Resource res){
+	private ResourceSelection resource;
+	public BookingService(Person pers, ResourceSelection res){
 		this.person=pers;
 		this.resource=res;
 

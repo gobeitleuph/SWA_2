@@ -18,7 +18,7 @@ class ContentServiceTest {
     void setUp() {
         contentService = new ContentService();
         content = new File("TestFile");
-        content.setBooking(booking);
+        ((File)content).setBooking(booking);
         name = "TestFolder";
         folder = new Folder(name);
     }

@@ -57,10 +57,6 @@ public class PaymentService {
 	}
 
 
-	protected void confirmation(){
-
-	}
-
 	public boolean payAmount(PaymentType ptype,Person pSenderperson, Person pReceiver, int pvalue, String pcredentialIdentifierInput){
 		switch (ptype){
 
@@ -81,11 +77,10 @@ public class PaymentService {
 
 		}
 
-
 		return true;
 	}
 
-	protected void transact(){
 
-	}
+
+
 }//end PaymentService

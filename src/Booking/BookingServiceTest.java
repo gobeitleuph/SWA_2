@@ -16,33 +16,27 @@ import java.time.LocalDate;
 class BookingServiceTest {
 
 
-    BookingService bd1;
-    EnglishBookingBuilder engbb;
-    Resource res1;
-    ResourceService resourceService;
+    private BookingService bd1;
+    private EnglishBookingBuilder engbb;
+    private ResourceSelection car;
+
     @BeforeEach
     void setUp() throws Exception{
 
-
+        ///Person///
         PersonService personService = new PersonService();
-
         personService.createPerson(PersonType.LegalPerson, "Test", "hallo@test.com", 012711111111, CredentialType.UserNamePasswordStrategy, "SurnameTest", LocalDate.of(200, 8, 12),"goodPassword");
-
-
         Person ps1 = personService.getPerson();
-
-
-        ///Person
-        ///////////
-        //Resource
-        resourceService = new ResourceService();
-
-
-        resourceService.getSelectedResource("label",new BigDecimal("500"),true);
-
-        res1 = resourceService.getResource();
-
-        //////////////
+        ///////
+        //Resource//
+        car = new Car();
+        car.setLabel("TestLabel");
+        car.setPrice(new BigDecimal("100"));
+        car.setAvailability(true);
+        ResourceService resourceService = new ResourceService();
+        ResourceSelection res1 = resourceService.getResource();
+        resourceService.getSelectedResource("label",new BigDecimal("500"),true, car);
+        ///////
 
         bd1 = new BookingService(ps1,res1);
 
@@ -51,8 +45,6 @@ class BookingServiceTest {
         bd1.createEnglishBooking(engbb);
 
         EnglishBooking engB = engbb.getResult();
-
-        System.out.println(engB.print());
 
     }
 

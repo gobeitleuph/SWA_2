@@ -8,13 +8,13 @@ import java.math.BigDecimal;
  * @version 1.0
  * @created 25-Aug-2021 17:56:00
  */
-public class ChildSeat extends Equipment {
+public class ChildSeat extends Resource {
 
 	private String label;
 	private BigDecimal price;
 	private Boolean availability;
 
-	public ChildSeat(String label, BigDecimal price, Boolean availability, Resource resource){
+	public ChildSeat(String label, BigDecimal price, Boolean availability, ResourceSelection resource){
 		super(resource);
 		this.label = label;
 		this.price = price;

@@ -8,6 +8,7 @@ package Content;
  */
 public class ContentService {
 
+	private Folder folder;
 	public ContentService(){
 
 	}
@@ -18,7 +19,11 @@ public class ContentService {
 	 */
 	public boolean addContent(Content content, Folder folder){
 		folder.addContent(content);
-
+		this.folder = folder;
 		return true;
+	}
+
+	public Folder getFolder(){
+		return folder;
 	}
 }//end ContentService
