@@ -17,9 +17,12 @@ import java.util.List;
 
 public class Hello {
 
-
-
     public static void main(String[] args) {
+
+
+        UserDialog userDialog = new UserDialog();
+        BookingType language = userDialog.selectLanguage();
+        userDialog.showMenu(language);
 
 
         CommandExecutor commandExecutor = new CommandExecutor();
@@ -99,6 +102,15 @@ public class Hello {
 
         ////////////////////Payment End////////////////////
 
+        ////////////////////Booking////////////////////
+        BookingType bookingType = BookingType.GermanBooking;
+        CommandController bookcon1 = new BookingController(pers1, res1, bookingType);
+        commandExecutor.executeCommand("creatBooking",bookcon1);
+        Booking booking1 = ((BookingController) bookcon1).getBooking();
+
+        System.out.println(booking1.print());
+        ////////////////////Booking End////////////////////
+
         ////////////////////Content////////////////////
         Folder folder1 = new Folder("TestFolder");
         File file1 = new File("TestFile");
@@ -108,18 +120,14 @@ public class Hello {
         Content fold1 = ((ContentController) contcon1).getFolder();
         System.out.println(fold1.getName());
         List<Content> folde1list = ((Folder)fold1).getFolderContentList();
-
+        //System.out.println(folde1list);
         ////////////////////Content End////////////////////
 
-        BookingService bd1 = new BookingService(pers1,res1);
-
-        EnglishBookingBuilder engbb = new EnglishBookingBuilder();
-
-        bd1.createEnglishBooking(engbb);
-
-        EnglishBooking engB = engbb.getResult();
-
-        System.out.println("\nEnglsih Booking built:\n" + engB.print());
 
     }
+
+
+
+
+
 }
