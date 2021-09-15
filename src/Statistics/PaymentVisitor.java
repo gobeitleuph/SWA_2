@@ -5,6 +5,31 @@ import Payment.*;
 public class PaymentVisitor implements Visitor {
 
     private int PayPalPaymentcountEN;
+
+    public int getPayPalPaymentcountEN() {
+        return PayPalPaymentcountEN;
+    }
+
+    public int getPayPalPaymentcountDE() {
+        return PayPalPaymentcountDE;
+    }
+
+    public int getGoogleWalletPaymentDEcountDE() {
+        return GoogleWalletPaymentDEcountDE;
+    }
+
+    public int getGoogleWalletPaymentENcountEN() {
+        return GoogleWalletPaymentENcountEN;
+    }
+
+    public int getMobileMoneyWalletPaymentDE() {
+        return MobileMoneyWalletPaymentDE;
+    }
+
+    public int getMobileMoneyWalletPaymentEN() {
+        return MobileMoneyWalletPaymentEN;
+    }
+
     private int PayPalPaymentcountDE;
     private int GoogleWalletPaymentDEcountDE;
     private int GoogleWalletPaymentENcountEN;

@@ -8,11 +8,12 @@ package Statistics;
  */
 public class StatisticsService {
 
-	public Bookings m_Bookings;
+	public PaymentVisitor pmv = new PaymentVisitor();
 
 	public StatisticsService(){
 
 	}
+
 
 
 

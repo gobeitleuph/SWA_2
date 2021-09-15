@@ -6,6 +6,7 @@ import Payment.Payment;
 import Payment.PaymentType;
 import Person.Person;
 import Resource.ResourceSelection;
+import Statistics.PaymentVisitor;
 import ViewController.*;
 import Person.PersonType;
 import Content.File;
@@ -447,6 +448,7 @@ public class UserDialog {
 //        contentList.set(folderIndex,fold1);
 
         //////////////END Content START Statistics////////////
+       // PaymentVisitor pmv = new PaymentVisitor();
 
     }
 
@@ -469,4 +471,6 @@ public class UserDialog {
     public List<ResourceSelection> getResourceList() {
         return resourceList;
     }
+
+
 }
