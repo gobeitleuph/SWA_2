@@ -14,17 +14,11 @@ public class AuthenticationService {
 
 	}
 
-	public void finalize() throws Throwable {
+	private Credential credentialStrategy;
 
-	}
-	/**
-	 * 
-	 * @param person
-	 * @param //credential
-	 */
 	public boolean authenticateSubject(Person person, String credentialIdentifierInput){
 		CredentialType credentialType = person.getCredentialType();
-		Credential credentialStrategy;
+
 		switch (credentialType){
 			case UserNamePasswordStrategy: {
 				credentialStrategy = new UserNamePasswordStrategy();
@@ -39,7 +33,6 @@ public class AuthenticationService {
 				break;
 			}
 
-
 			default:
 				throw new IllegalStateException("Credential not known" + credentialType);
 		}
@@ -47,7 +40,14 @@ public class AuthenticationService {
 		Subject subject = new Subject(credentialStrategy, person, credentialIdentifierInput);
 		subject.execute();
 
+		if(credentialStrategy.getResult()){
+			return true;
+		}else {
+			return false;
+		}
 
-		return true;
+	}
+	public boolean getAuthentication(){
+		return credentialStrategy.getResult();
 	}
 }//end AuthenticationService

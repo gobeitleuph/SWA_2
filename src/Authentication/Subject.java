@@ -3,14 +3,7 @@ package Authentication;
 
 import Person.Person;
 
-/**
- * @author leona
- * @version 1.0
- * @created 25-Aug-2021 17:56:01
- */
 public class Subject {
-
-	//public AuthenticationService m_AuthenticationService;
 
 	private Credential credential;
 	private Person person;
@@ -34,15 +27,4 @@ public class Subject {
 		this.credential = credential;
 	}
 
-//	public Person getPerson() {
-//		return person;
-//	}
-//
-//	public void setPerson(Person person) {
-//		this.person = person;
-//	}
-
-	public void finalize() throws Throwable {
-
-	}
-}//end Subject
+}

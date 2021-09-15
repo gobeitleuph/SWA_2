@@ -10,4 +10,6 @@ import Person.Person;
  */
 public interface Credential {
     void executeStrategy(Person person, String credentialIdentifierInput);
+
+    public boolean getResult();
 }
