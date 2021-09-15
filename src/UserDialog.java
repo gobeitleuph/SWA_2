@@ -28,6 +28,7 @@ public class UserDialog {
 
     public UserDialog() {
         this.commandExecutor = new CommandExecutor();
+
     }
 
     public String showMenu(){
@@ -98,6 +99,8 @@ public class UserDialog {
     }
 
     public BookingType selectLanguage(){
+
+
         System.out.println("Please select a language by typing the number of your chosen option.\nBiite wählen Sie eine Sprache aus, durch Eingabe der Nummer Ihrer gewaehlen Option.\n Option 1: English \n Option 2: Deutsch");
         Scanner scanner = new Scanner(System.in);
         String languageOption = scanner.next();
@@ -138,9 +141,9 @@ public class UserDialog {
 
 
 
-    public void carReservationDialog (List<Booking> bookingList,List<Content> contentListList,List<Payment> paymentList,List<Person> personList,List<ResourceSelection> resourceList){
+    public void carReservationDialog (List<Booking> bookingList,List<Content> contentListList,List<Payment> paymentList,List<Person> personList,List<ResourceSelection> resourceList) {
 
-
+        PaymentVisitor pmv = new PaymentVisitor();
         System.out.println("Welcome to the Car Reservation Service");
         System.out.println("Please give in some details to your person to continue.");
         System.out.println("Are you a Company or a Person?\n1: Company\n2: Person");
@@ -448,7 +451,19 @@ public class UserDialog {
 //        contentList.set(folderIndex,fold1);
 
         //////////////END Content START Statistics////////////
-       // PaymentVisitor pmv = new PaymentVisitor();
+
+        System.out.println("Google EN "+pmv.getGoogleWalletPaymentENcountEN());
+        System.out.println("Google DE "+pmv.getGoogleWalletPaymentDEcountDE());
+        System.out.println("Paypal EN "+pmv.getPayPalPaymentcountEN());
+        System.out.println("Paypal DE "+pmv.getPayPalPaymentcountDE());
+        System.out.println("MobileWallet EN "+pmv.getMobileMoneyWalletPaymentEN());
+        System.out.println("MobileWallet DE "+pmv.getMobileMoneyWalletPaymentDE());
+
+
+
+
+
+
 
     }
 
