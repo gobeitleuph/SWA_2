@@ -68,7 +68,7 @@ public class Hello {
 
         //Content
         Folder folderm ;
-        Folder folderY = null;
+        Folder folderY = new Folder("Year");
 
         String year = Integer.toString(LocalDate.now().getYear());
         String targetNameY = year;
