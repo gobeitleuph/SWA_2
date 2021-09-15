@@ -67,9 +67,9 @@ public class PaymentDialog {
         String amountInput = scanner4.next();
         int amount = Integer.parseInt(amountInput);
 
-        System.out.println("Please enter the Password for the sending Person");
-        Scanner scanner5 = new Scanner(System.in);
-        String credentialIdentifierInput = scanner5.next();
+        //System.out.println("Please enter the Password for the sending Person");
+        //Scanner scanner5 = new Scanner(System.in);
+        //String credentialIdentifierInput = scanner5.next();
 
         System.out.println("Please select a payment type\n1: PayPal\n2: Google Wallet\n3: Mobile Money Wallet");
         Scanner scanner6= new Scanner(System.in);
@@ -87,7 +87,7 @@ public class PaymentDialog {
                 break;
         }
 
-        CommandController paycon1 = new PaymentController(paymentType, personSender, personReceiver, amount, credentialIdentifierInput);
+        CommandController paycon1 = new PaymentController(paymentType, personSender, personReceiver, amount);
         commandExecutor.executeCommand("transactPayment",paycon1);
         Payment pay1 = ((PaymentController) paycon1).getPayment();
         paymentList.add(pay1);

@@ -41,7 +41,7 @@ public class Hello {
         CommandExecutor commandExecutor = new CommandExecutor();
 
         // Person creation
-        CommandController perscon2 = new PersonController(PersonType.LegalPerson, "CarReservationService GmbH", "info@CRS.com", 012711111111, CredentialType.UserNamePasswordStrategy, "", LocalDate.of(0, 0, 0), "goodPassword");
+        CommandController perscon2 = new PersonController(PersonType.LegalPerson, "CarReservationService GmbH", "info@CRS.com", 012711111111, CredentialType.UserNamePasswordStrategy, "", LocalDate.of(01, 01, 01), "goodPassword");
         commandExecutor.executeCommand("createPerson", perscon2);
         Person pers2 = ((PersonController) perscon2).getPerson();
         personList.add(pers2);
@@ -66,6 +66,48 @@ public class Hello {
         car3.setAvailability(true);
         resourceList.add(car3);
 
+        //Content
+        Folder folderm ;
+        Folder folderY ;
+        LocalDate.now().getMonth().getValue();
+        LocalDate.now().getYear();
+
+        String year = Integer.toString(LocalDate.now().getYear());
+        String targetNameY = year;
+        Content resultY = null;
+        for (Content c : contentList) {
+            if (targetNameY.equals(c.getName())) {
+                resultY = c;
+                break;
+            }
+            else{
+                folderY = new Folder (year);
+                contentList.add(folderY);
+            }
+        }
+
+        String month = Integer.toString(LocalDate.now().getMonth().getValue());
+        String targetNameM = month;
+        Content resultM = null;
+        for (Content c : ((Folder)folderY).getFolderContentList()) {
+            if (targetNameM.equals(c.getName())) {
+                resultM = c;
+                break;
+            }
+            else{
+                contentList.add(folderm = new Folder (month));
+            }
+        }
+
+
+        Folder folder1 = new Folder("TestFolder");
+        File file1 = new File("TestFile");
+        //File kann Payment und Booking zugewiesen werden
+        CommandController contcon1 = new ContentController(file1, folder1);
+        commandExecutor.executeCommand("addContentToFolder",contcon1);
+        Content fold1 = ((ContentController) contcon1).getFolder();
+        System.out.println(fold1.getName());
+        List<Content> folde1list = ((Folder)fold1).getFolderContentList();
 
         UserDialog userDialog = new UserDialog();
         //BookingType language = userDialog.selectLanguage();
@@ -76,16 +118,16 @@ public class Hello {
 
             switch (menuOption){
                 case "1":
-                    userDialog.carReservationDialog();
+                    userDialog.carReservationDialog(bookingList,contentList,paymentList,personList,resourceList);
                     break;
                 case "21":
-                    authenticationDialog.dataInput(personList);
+                    boolean idResult = authenticationDialog.dataInput(personList);
                     break;
                 case "22":
-                    authenticationDialog.dataDelete();
+                    authenticationDialog.dataDelete(personList);
                     break;
                 case "23":
-                    authenticationDialog.dataOutput();
+                    authenticationDialog.dataOutput(personList);
                     break;
                 case "31":
                     bookingDialog.dataInput(bookingList,personList,resourceList);
@@ -208,14 +250,14 @@ public class Hello {
         Person personSender;
         Person personReceiver;
         int value;
-        String credentialIdentifierInput;
+        //String credentialIdentifierInput;
         paymentType = PaymentType.PayPal;
         personSender = pers1;
         personReceiver = pers2;
         value = 500;
-        credentialIdentifierInput = "goodPassword";
+        //credentialIdentifierInput = "goodPassword";
 
-        CommandController paycon1 = new PaymentController(paymentType, personSender, personReceiver, value, credentialIdentifierInput);
+        CommandController paycon1 = new PaymentController(paymentType, personSender, personReceiver, value);
         commandExecutor.executeCommand("transactPayment",paycon1);
 
         ////////////////////Payment End////////////////////
@@ -242,6 +284,7 @@ public class Hello {
         ////////////////////Content End////////////////////
 
         //Authentication//
+        String credentialIdentifierInput = "goodPassword";
         CommandController authcon1 = new AuthenticationController(pers1, credentialIdentifierInput);
         commandExecutor.executeCommand("authenticatePerson",authcon1);
         boolean authResult = ((AuthenticationController) authcon1).getAuthentication();

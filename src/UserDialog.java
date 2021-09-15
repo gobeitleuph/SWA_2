@@ -1,6 +1,13 @@
+import Booking.Booking;
 import Booking.BookingType;
+import Content.Content;
+import Payment.Payment;
+import Person.Person;
+import Resource.ResourceSelection;
 
 import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserDialog {
@@ -10,6 +17,7 @@ public class UserDialog {
 
 
     public String showMenu(){
+
 //        switch (language){
 //            case EnglishBooking :{
                 System.out.println("Please select a number:\n1 Car Reservation Service\n2 Options Authentication\n3 Options Booking\n4 Options Content\n5 Options Payment\n6 Options Person\n7 Options Resource\n8 Options Statistics\n0 End");
@@ -96,7 +104,7 @@ public class UserDialog {
 
     }
 
-    public void carReservationDialog (){
+    public void carReservationDialog (List<Booking> bookingList,List<Content> contentListList,List<Payment> paymentList,List<Person> personList,List<ResourceSelection> resourceList){
         System.out.println("Welcome to the Car Reservation Service");
         System.out.println("Please give in some details to your person to continue.");
     }

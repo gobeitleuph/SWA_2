@@ -10,17 +10,17 @@ public class PaymentController implements CommandController{
     private Person personSender;
     private Person personReceiver;
     private int value;
-    private String credentialIdentifierInput;
+    //private String credentialIdentifierInput;
     private Payment payment;
     private Person pgetSender;
     private Person pgetReceiver;
 
-    public PaymentController(PaymentType paymentType, Person personSender, Person personReceiver, int value, String credentialIdentifierInput) {
+    public PaymentController(PaymentType paymentType, Person personSender, Person personReceiver, int value) {
         this.paymentType = paymentType;
         this.personSender = personSender;
         this.personReceiver = personReceiver;
         this.value = value;
-        this.credentialIdentifierInput = credentialIdentifierInput;
+        //this.credentialIdentifierInput = credentialIdentifierInput;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class PaymentController implements CommandController{
         switch (command){
             case "transactPayment":{
                 PaymentService paymentService = new PaymentService();
-                paymentService.payAmount(paymentType, personSender, personReceiver, value, credentialIdentifierInput);
+                paymentService.payAmount(paymentType, personSender, personReceiver, value);
                 this.payment = paymentService.getPayment();
                 this.pgetReceiver = paymentService.getReceiver();
                 this.pgetSender = paymentService.getSender();

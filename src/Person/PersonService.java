@@ -45,7 +45,7 @@ public class PersonService {
 
 		if (person.personCreated()){
 			System.out.println("Person erstellt");
-			System.out.println(person.emailAddress + person.name + person.phoneNumber + person.credentialType + person.surname + person.birthday + personType);
+			//System.out.println(person.emailAddress + person.name + person.phoneNumber + person.credentialType + person.surname + person.birthday + personType);
 
 			return true;
 		}
