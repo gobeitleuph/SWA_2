@@ -1,6 +1,8 @@
 package Payment;
 
 import Authentication.AuthenticationService;
+import Statistics.PaymentVisitor;
+import Statistics.Visitor;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -14,6 +16,8 @@ public abstract class Payment {
     int Value = cvalue.amount;
     AuthenticationService auth;
     String pcredent;
+
+    public abstract void accept(Visitor visitor);
 
 
 

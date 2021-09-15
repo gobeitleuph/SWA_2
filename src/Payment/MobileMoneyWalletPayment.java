@@ -1,5 +1,7 @@
 package Payment;
 
+import Statistics.Visitor;
+
 import java.time.LocalDateTime;
 
 
@@ -12,7 +14,12 @@ public class MobileMoneyWalletPayment extends Payment{
             this.Value = pValue;
         }
 
-        @Override
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
+
+    @Override
         public boolean Commit() {
 
                 this.Date = LocalDateTime.now();

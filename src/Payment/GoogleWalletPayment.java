@@ -1,5 +1,7 @@
 package Payment;
 
+import Statistics.Visitor;
+
 import java.time.LocalDateTime;
 
 public class GoogleWalletPayment extends Payment{
@@ -8,6 +10,11 @@ public class GoogleWalletPayment extends Payment{
         this.Sender = pSender;
         this.Receiver = pReceiver;
         this.Value = pValue;
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 
     @Override

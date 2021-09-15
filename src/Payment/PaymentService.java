@@ -27,7 +27,7 @@ public class PaymentService {
 	}
 //	public void payWithPaypal(Person pSenderperson, Person pReceiver){
 //
-//		Payment payment = new PayPalPayment(pSenderperson.getAccount(), pReceiver.getAccount())
+//		Payment payment = new PayPalPaymentEN(pSenderperson.getAccount(), pReceiver.getAccount())
 //
 //
 //
@@ -35,7 +35,7 @@ public class PaymentService {
 //			auth.authenticateSubject(Sender.getInhaber(), pcredent);
 
 	public void payWithPaypal(Person pSenderperson, Person pReceiver, int pvalue, String pcredentialIdentifierInput){
-		Payment payment = new PayPalPayment(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
+		Payment payment = new PayPalPaymentEN(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
 		payment.auth.authenticateSubject(pSenderperson, pcredentialIdentifierInput);
 		payment.Commit();
 
@@ -50,7 +50,7 @@ public class PaymentService {
 	}
 
 	public void payWithMobile(Person pSenderperson, Person pReceiver, int pvalue, String pcredentialIdentifierInput){
-		Payment payment = new PayPalPayment(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
+		Payment payment = new PayPalPaymentEN(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
 		payment.auth.authenticateSubject(pSenderperson, pcredentialIdentifierInput);
 		payment.Commit();
 
