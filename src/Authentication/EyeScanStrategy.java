@@ -14,18 +14,23 @@ public class EyeScanStrategy implements Credential {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
+	private boolean result;
 
 	@Override
 	public void executeStrategy(Person person, String credentialIdentifierInput) {
 		if (person.getCredentialIdentifier() == credentialIdentifierInput){
 			System.out.printf("Authentication successfull");
+			this.result = true;
 		}
 		else {
 			System.out.println("Authentication fail");
+			this.result = false;
 		}
-		//String Password = person.getCredentialIdentifier();
+
+
+	}
+
+	public boolean getResult(){
+		return result;
 	}
 }//end EyeScanStrategy

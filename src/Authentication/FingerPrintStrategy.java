@@ -13,19 +13,22 @@ public class FingerPrintStrategy implements Credential {
 	public FingerPrintStrategy(){
 
 	}
-
-	public void finalize() throws Throwable {
-
-	}
+	private boolean result;
 
 	@Override
 	public void executeStrategy(Person person, String credentialIdentifierInput) {
 		if (person.getCredentialIdentifier() == credentialIdentifierInput){
 			System.out.printf("Authentication successfull");
+			this.result = true;
 		}
 		else {
 			System.out.println("Authentication fail");
+			this.result = false;
 		}
+	}
+
+	public boolean getResult(){
+		return result;
 	}
 
 }//end FingerPrintStrategy

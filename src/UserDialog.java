@@ -9,21 +9,21 @@ public class UserDialog {
     private String otherMenuoption;
 
 
-    public String showMenu(BookingType language){
-        switch (language){
-            case EnglishBooking :{
-                System.out.println("Please select number:\n1 Car Reservation Service\n2 Options Authentication\n3 Options Booking\n4 Options Content\n5 Options Payment\n6 Options Person\n7 Options Resource\n8 Options Statistics");
+    public String showMenu(){
+//        switch (language){
+//            case EnglishBooking :{
+                System.out.println("Please select a number:\n1 Car Reservation Service\n2 Options Authentication\n3 Options Booking\n4 Options Content\n5 Options Payment\n6 Options Person\n7 Options Resource\n8 Options Statistics\n0 End");
                 Scanner scanner = new Scanner(System.in);
                 this.mainMenuOption = scanner.next();
-                break;
-            }
-            case GermanBooking:{
-                System.out.println("Bitte Nummer wählen:\n1 Car Reservation Service\n2 Optionen Authentifizierung\n3 Optionen Buchung\n4 Optionen Inhalt\n5 Optionen Bezahlung\n6 Optionen Person\n7 Optionen Ressource\n8 Optionen Statistik ");
-                Scanner scanner = new Scanner(System.in);
-                this.mainMenuOption = scanner.next();
-                break;
-            }
-        }
+//                break;
+//            }
+//            case GermanBooking:{
+//                System.out.println("Bitte Nummer wählen:\n1 Car Reservation Service\n2 Optionen Authentifizierung\n3 Optionen Buchung\n4 Optionen Inhalt\n5 Optionen Bezahlung\n6 Optionen Person\n7 Optionen Ressource\n8 Optionen Statistik ");
+//                Scanner scanner = new Scanner(System.in);
+//                this.mainMenuOption = scanner.next();
+//                break;
+//            }
+//        }
         switch (mainMenuOption){
             case "1":{
                 this.otherMenuoption ="1";
@@ -64,6 +64,9 @@ public class UserDialog {
                 StatisticsDialog statisticsDialog = new StatisticsDialog();
                 this.otherMenuoption = statisticsDialog.showMenu();
                 break;
+            }case "0":{
+                this.otherMenuoption = "0";
+                break;
             }
             default:{
                 throw new IllegalStateException("Input not known! Please try again" );
@@ -93,7 +96,7 @@ public class UserDialog {
 
     }
 
-    public void carReservationDialog (BookingType language){
+    public void carReservationDialog (){
         System.out.println("Welcome to the Car Reservation Service");
         System.out.println("Please give in some details to your person to continue.");
     }

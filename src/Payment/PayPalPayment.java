@@ -11,13 +11,7 @@ public class PayPalPayment extends Payment{
                 this.Sender = pSender;
                 this.Receiver = pReceiver;
                 this.Value = pValue;
-
-
-
-
         }
-
-
 
         @Override
         public boolean Commit() {
@@ -30,6 +24,15 @@ public class PayPalPayment extends Payment{
 
                 return true;
         }
+        @Override
+        public Account getReceiver(){
+                return Receiver;
+        }
+        @Override
+        public Account getSender(){
+                return Sender;
+        }
+
     }
 
 

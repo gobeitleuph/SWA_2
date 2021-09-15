@@ -7,6 +7,7 @@ import ViewController.PersonController;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class PersonDialog {
@@ -118,17 +119,23 @@ public class PersonDialog {
                 case"2":{
                     this.credentialType = CredentialType.EyeScanStrategy;
                     System.out.println("Please look in the camera");
-                    Scanner scanner11 = new Scanner(System.in);
-                    String credInput = scanner11.next();
-                    this.credentialIdentifier = credInput;
+                    System.out.println("Sorry the camera is not focusing but you can use this number to authenticate yourself:");
+                    System.out.println("Please dont loose this number!");
+                    Random random = new Random();
+                    int randomInt = random.nextInt(10000);
+                    this.credentialIdentifier = Integer.toString(randomInt);
+                    System.out.println(Integer.toString(randomInt));
                     break;
                 }
                 case"3":{
                     this.credentialType = CredentialType.FingerPrintStrategy;
                     System.out.println("Please put your finger on the camera");
-                    Scanner scanner11 = new Scanner(System.in);
-                    String credInput = scanner11.next();
-                    this.credentialIdentifier = credInput;
+                    System.out.println("Sorry the camera is not focusing but you can use this number to authenticate yourself:");
+                    System.out.println("Please dont loose this number!");
+                    Random random = new Random();
+                    int randomInt = random.nextInt(10000);
+                    this.credentialIdentifier = Integer.toString(randomInt);
+                    System.out.println(Integer.toString(randomInt));
                     break;
                 }
             }

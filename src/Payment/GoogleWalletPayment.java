@@ -21,4 +21,13 @@ public class GoogleWalletPayment extends Payment{
 
         return true;
     }
+
+    @Override
+    public Account getReceiver(){
+        return Receiver;
+    }
+    @Override
+    public Account getSender(){
+        return Sender;
+    }
 }

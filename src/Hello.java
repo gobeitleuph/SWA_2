@@ -24,8 +24,9 @@ public class Hello {
 
 
         UserDialog userDialog = new UserDialog();
-        BookingType language = userDialog.selectLanguage();
-        String menuOption = userDialog.showMenu(language);
+        //BookingType language = userDialog.selectLanguage();
+        String menuOption = userDialog.showMenu();
+
 
         AuthenticationDialog authenticationDialog = new AuthenticationDialog();
         BookingDialog bookingDialog = new BookingDialog();
@@ -43,10 +44,39 @@ public class Hello {
         List<ResourceSelection> resourceList = new ArrayList<>();
         //stat ??
 
+        CommandExecutor commandExecutor = new CommandExecutor();
+
+        // Person creation
+        CommandController perscon2 = new PersonController(PersonType.LegalPerson, "CarReservationService GmbH", "info@CRS.com", 012711111111, CredentialType.UserNamePasswordStrategy, "", LocalDate.of(0, 0, 0), "goodPassword");
+        commandExecutor.executeCommand("createPerson", perscon2);
+        Person pers2 = ((PersonController) perscon2).getPerson();
+        personList.add(pers2);
+
+        // CAR CREATION
+        ResourceSelection car1;
+        car1 = new Car();
+        car1.setLabel("Small-size car");
+        car1.setPrice(new BigDecimal("40"));
+        car1.setAvailability(true);
+        resourceList.add(car1);
+        ResourceSelection car2;
+        car2 = new Car();
+        car2.setLabel("Mid-size car");
+        car2.setPrice(new BigDecimal("70"));
+        car2.setAvailability(true);
+        resourceList.add(car2);
+        ResourceSelection car3;
+        car3 = new Car();
+        car3.setLabel("Top-size car");
+        car3.setPrice(new BigDecimal("100"));
+        car3.setAvailability(true);
+        resourceList.add(car3);
+
+
 
         switch (menuOption){
             case "1":
-                userDialog.carReservationDialog(language);
+                userDialog.carReservationDialog();
                 break;
             case "21":
                 authenticationDialog.dataInput();
@@ -58,13 +88,13 @@ public class Hello {
                 authenticationDialog.dataOutput();
                 break;
             case "31":
-                bookingDialog.dataInput();
+                bookingDialog.dataInput(bookingList,personList,resourceList);
                 break;
             case "32":
-                bookingDialog.dataDelete();
+                bookingDialog.dataDelete(bookingList);
                 break;
             case "33":
-                bookingDialog.dataOutput();
+                bookingDialog.dataOutput(bookingList);
                 break;
             case "41":
                 contentDialog.dataInput();
@@ -76,7 +106,7 @@ public class Hello {
                 contentDialog.dataOutput();
                 break;
             case "51":
-                paymentDialog.dataInput();
+                paymentDialog.dataInput(paymentList,personList);
                 break;
             case "52":
                 paymentDialog.dataDelete();
@@ -85,9 +115,7 @@ public class Hello {
                 paymentDialog.dataOutput();
                 break;
             case "61":
-
                 personList = personDialog.dataInput(personList);
-
                 break;
             case "62":
                 personList = personDialog.dataDelete(personList);
@@ -96,13 +124,13 @@ public class Hello {
                 personDialog.dataOutput(personList);
                 break;
             case "71":
-                resourceDialog.dataInput();
+                resourceList = resourceDialog.dataInput(resourceList);
                 break;
             case "72":
-                resourceDialog.dataDelete();
+                resourceList = resourceDialog.dataDelete(resourceList);
                 break;
             case "73":
-                resourceDialog.dataOutput();
+                resourceDialog.dataOutput(resourceList);
                 break;
             case "81":
                 statisticsDialog.dataInput();
@@ -115,8 +143,11 @@ public class Hello {
                 break;
 
         }
+        if (Integer.parseInt(menuOption) != 0){
+            menuOption = userDialog.showMenu();
+        }
 
-        CommandExecutor commandExecutor = new CommandExecutor();
+
 
 
         ////////////////////Person////////////////////
@@ -146,11 +177,11 @@ public class Hello {
         CommandController perscon1 = new PersonController(personType, name, emailAddress, phoneNumber, credentialType, surname, birthday, credentialIdentifier);
         commandExecutor.executeCommand("createPerson", perscon1);
         Person pers1 = ((PersonController) perscon1).getPerson();
-        CommandController perscon2 = new PersonController(PersonType.LegalPerson, "NameTest", "hallo@test.com", 012711111111, CredentialType.UserNamePasswordStrategy, "SurnameTest", LocalDate.of(200, 8, 12), "goodPassword");
-        commandExecutor.executeCommand("createPerson", perscon2);
-        Person pers2 = ((PersonController) perscon2).getPerson();
+        CommandController perscon3 = new PersonController(PersonType.LegalPerson, "NameTest", "hallo@test.com", 012711111111, CredentialType.UserNamePasswordStrategy, "SurnameTest", LocalDate.of(200, 8, 12), "goodPassword");
+        commandExecutor.executeCommand("createPerson", perscon3);
+        Person pers3 = ((PersonController) perscon2).getPerson();
         System.out.println(pers1.getName());
-        System.out.println(pers2.getName());
+        System.out.println(pers3.getName());
         ////////////////////Person End////////////////////
 
         ////////////////////Resource////////////////////
@@ -214,9 +245,13 @@ public class Hello {
         //System.out.println(folde1list);
         ////////////////////Content End////////////////////
 
+        //Authentication//
+        CommandController authcon1 = new AuthenticationController(pers1, credentialIdentifierInput);
+        commandExecutor.executeCommand("authenticatePerson",authcon1);
+        boolean authResult = ((AuthenticationController) authcon1).getAuthentication();
+
 
     }
-
 
 
 

@@ -15,23 +15,13 @@ public abstract class Payment {
     AuthenticationService auth;
     String pcredent;
 
-
-
-
-
-
-
     public Payment() {
-
         auth = new AuthenticationService();
-
-
 
     }
 
     public boolean authenticate(Account pSender, Account pReceiver){
         auth.authenticateSubject(Sender.getInhaber(), pcredent);
-
         return true;
     }
 

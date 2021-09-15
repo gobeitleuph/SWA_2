@@ -40,11 +40,13 @@ public class BookingService {
 				createEnglishBooking(engbb);
 				break;
 		}
-
+		booking.setPerson(person);
+		booking.setResource(resource);
 		return true;
 	}
 
 	public void createGermanBooking(BookingBuilder bookingBuilder){
+
 		bookingBuilder.setHead("Buchung von"+ person.getName());
 		bookingBuilder.setBody("Deutscher Inhalt"+resource.getLabel());
 	}

@@ -22,9 +22,6 @@ public class PaymentService {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 //	public void payWithPaypal(Person pSenderperson, Person pReceiver){
 //
 //		Payment payment = new PayPalPayment(pSenderperson.getAccount(), pReceiver.getAccount())
@@ -34,30 +31,41 @@ public class PaymentService {
 //			}
 //			auth.authenticateSubject(Sender.getInhaber(), pcredent);
 
+	private	Person pReceiver;
+	private	Person pSender;
+	private Payment payment;
+
 	public void payWithPaypal(Person pSenderperson, Person pReceiver, int pvalue, String pcredentialIdentifierInput){
-		Payment payment = new PayPalPayment(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
+		this.payment = new PayPalPayment(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
 		payment.auth.authenticateSubject(pSenderperson, pcredentialIdentifierInput);
 		payment.Commit();
-
+		this.pReceiver.setAccount(payment.getReceiver());
+		this.pSender.setAccount(payment.getSender());
 
 	}
 
 	public void payWithGoogle(Person pSenderperson, Person pReceiver, int pvalue, String pcredentialIdentifierInput){
-		Payment payment = new GoogleWalletPayment(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
+		this.payment = new GoogleWalletPayment(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
 		payment.auth.authenticateSubject(pSenderperson, pcredentialIdentifierInput);
 		payment.Commit();
-
+		this.pReceiver.setAccount(payment.getReceiver());
+		this.pSender.setAccount(payment.getSender());
 	}
 
 	public void payWithMobile(Person pSenderperson, Person pReceiver, int pvalue, String pcredentialIdentifierInput){
-		Payment payment = new PayPalPayment(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
+		this.payment = new PayPalPayment(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
 		payment.auth.authenticateSubject(pSenderperson, pcredentialIdentifierInput);
 		payment.Commit();
-
+		this.pReceiver.setAccount(payment.getReceiver());
+		this.pSender.setAccount(payment.getSender());
 	}
 
 
 	public boolean payAmount(PaymentType ptype,Person pSenderperson, Person pReceiver, int pvalue, String pcredentialIdentifierInput){
+		this.pSender = pSenderperson;
+		this.pReceiver = pReceiver;
+
+
 		switch (ptype){
 
 			case PayPal :{
@@ -75,11 +83,20 @@ public class PaymentService {
 				break;
 			}
 
+
 		}
 
 		return true;
 	}
-
+	public Payment getPayment(){
+		return payment;
+	}
+	public Person getReceiver(){
+		return pReceiver;
+	}
+	public Person getSender(){
+		return pSender;
+	}
 
 
 
