@@ -20,6 +20,12 @@ public class FingerPrintStrategy implements Credential {
 
 	@Override
 	public void executeStrategy(Person person, String credentialIdentifierInput) {
-
+		if (person.getCredentialIdentifier() == credentialIdentifierInput){
+			System.out.printf("Authentication successfull");
+		}
+		else {
+			System.out.println("Authentication fail");
+		}
 	}
+
 }//end FingerPrintStrategy

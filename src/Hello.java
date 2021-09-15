@@ -3,16 +3,19 @@ import Booking.*;
 import Content.Content;
 import Content.File;
 import Content.Folder;
+import Payment.Payment;
 import Payment.PaymentService;
 import Payment.PaymentType;
 import Person.Person;
 import Person.PersonType;
 import Resource.Car;
+import Resource.Resource;
 import Resource.ResourceSelection;
 import ViewController.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Hello {
@@ -23,6 +26,7 @@ public class Hello {
         UserDialog userDialog = new UserDialog();
         BookingType language = userDialog.selectLanguage();
         String menuOption = userDialog.showMenu(language);
+
         AuthenticationDialog authenticationDialog = new AuthenticationDialog();
         BookingDialog bookingDialog = new BookingDialog();
         ContentDialog contentDialog = new ContentDialog();
@@ -30,6 +34,14 @@ public class Hello {
         PersonDialog personDialog = new PersonDialog();
         ResourceDialog resourceDialog = new ResourceDialog();
         StatisticsDialog statisticsDialog = new StatisticsDialog();
+
+        //auth in person
+        List<Booking> bookingList = new ArrayList<>();
+        List<Content> contentList = new ArrayList<>();
+        List<Payment> paymentList = new ArrayList<>();
+        List<Person> personList = new ArrayList<>();
+        List<ResourceSelection> resourceList = new ArrayList<>();
+        //stat ??
 
 
         switch (menuOption){
@@ -73,13 +85,15 @@ public class Hello {
                 paymentDialog.dataOutput();
                 break;
             case "61":
-                personDialog.dataInput();
+
+                personList = personDialog.dataInput(personList);
+
                 break;
             case "62":
-                personDialog.dataDelete();
+                personList = personDialog.dataDelete(personList);
                 break;
             case "63":
-                personDialog.dataOutput();
+                personDialog.dataOutput(personList);
                 break;
             case "71":
                 resourceDialog.dataInput();
