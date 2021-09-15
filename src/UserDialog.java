@@ -24,35 +24,43 @@ public class UserDialog {
         }
         switch (menuOption){
             case "1":{
-                carReservationDialog();
+                carReservationDialog(language);
                 break;
             }
             case "2":{
-                System.out.println("2");
+                AuthenticationDialog authenticationDialog = new AuthenticationDialog();
+                authenticationDialog.showMenu();
+
                 break;
             }
             case "3":{
-                System.out.println("3");
+                BookingDialog bookingDialog = new BookingDialog();
+                bookingDialog.showMenu();
                 break;
             }
             case "4":{
-                System.out.println("4");
+                ContentDialog contentDialog = new ContentDialog();
+                contentDialog.showMenu();
                 break;
             }
             case "5":{
-                System.out.println("5");
+                PaymentDialog paymentDialog = new PaymentDialog();
+                paymentDialog.showMenu();
                 break;
             }
             case "6":{
-                System.out.println("6");
+                PersonDialog personDialog = new PersonDialog();
+                personDialog.showMenu();
                 break;
             }
             case "7":{
-                System.out.println("7");
+                ResourceDialog resourceDialog = new ResourceDialog();
+                resourceDialog.showMenu();
                 break;
             }
             case "8":{
-                System.out.println("8");
+                StatisticsDialog statisticsDialog = new StatisticsDialog();
+                statisticsDialog.showMenu();
                 break;
             }
         }
@@ -79,7 +87,7 @@ public class UserDialog {
 
     }
 
-    public void carReservationDialog (){
+    public void carReservationDialog (BookingType language){
         System.out.println("Welcome to the Car Reservation Service");
         System.out.println("Please give in some details to your person to continue.");
     }
