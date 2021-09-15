@@ -22,12 +22,6 @@ public class Hello {
 
     public static void main(String[] args) {
 
-
-        UserDialog userDialog = new UserDialog();
-        //BookingType language = userDialog.selectLanguage();
-        String menuOption = userDialog.showMenu();
-
-
         AuthenticationDialog authenticationDialog = new AuthenticationDialog();
         BookingDialog bookingDialog = new BookingDialog();
         ContentDialog contentDialog = new ContentDialog();
@@ -73,82 +67,84 @@ public class Hello {
         resourceList.add(car3);
 
 
+        UserDialog userDialog = new UserDialog();
+        //BookingType language = userDialog.selectLanguage();
 
-        switch (menuOption){
-            case "1":
-                userDialog.carReservationDialog();
-                break;
-            case "21":
-                authenticationDialog.dataInput();
-                break;
-            case "22":
-                authenticationDialog.dataDelete();
-                break;
-            case "23":
-                authenticationDialog.dataOutput();
-                break;
-            case "31":
-                bookingDialog.dataInput(bookingList,personList,resourceList);
-                break;
-            case "32":
-                bookingDialog.dataDelete(bookingList);
-                break;
-            case "33":
-                bookingDialog.dataOutput(bookingList);
-                break;
-            case "41":
-                contentDialog.dataInput();
-                break;
-            case "42":
-                contentDialog.dataDelete();
-                break;
-            case "43":
-                contentDialog.dataOutput();
-                break;
-            case "51":
-                paymentDialog.dataInput(paymentList,personList);
-                break;
-            case "52":
-                paymentDialog.dataDelete();
-                break;
-            case "53":
-                paymentDialog.dataOutput();
-                break;
-            case "61":
-                personList = personDialog.dataInput(personList);
-                break;
-            case "62":
-                personList = personDialog.dataDelete(personList);
-                break;
-            case "63":
-                personDialog.dataOutput(personList);
-                break;
-            case "71":
-                resourceList = resourceDialog.dataInput(resourceList);
-                break;
-            case "72":
-                resourceList = resourceDialog.dataDelete(resourceList);
-                break;
-            case "73":
-                resourceDialog.dataOutput(resourceList);
-                break;
-            case "81":
-                statisticsDialog.dataInput();
-                break;
-            case "82":
-                statisticsDialog.dataDelete();
-                break;
-            case "83":
-                statisticsDialog.dataOutput();
-                break;
-
-        }
-        if (Integer.parseInt(menuOption) != 0){
+        String menuOption = "1";
+        while (Integer.parseInt(menuOption) != 0){
             menuOption = userDialog.showMenu();
+
+            switch (menuOption){
+                case "1":
+                    userDialog.carReservationDialog();
+                    break;
+                case "21":
+                    authenticationDialog.dataInput(personList);
+                    break;
+                case "22":
+                    authenticationDialog.dataDelete();
+                    break;
+                case "23":
+                    authenticationDialog.dataOutput();
+                    break;
+                case "31":
+                    bookingDialog.dataInput(bookingList,personList,resourceList);
+                    break;
+                case "32":
+                    bookingDialog.dataDelete(bookingList);
+                    break;
+                case "33":
+                    bookingDialog.dataOutput(bookingList);
+                    break;
+                case "41":
+                    contentDialog.dataInput();
+                    break;
+                case "42":
+                    contentDialog.dataDelete();
+                    break;
+                case "43":
+                    contentDialog.dataOutput();
+                    break;
+                case "51":
+                    paymentList = paymentDialog.dataInput(paymentList,personList);
+                    personList = paymentDialog.getPersonList();
+                    break;
+                case "52":
+                    paymentList = paymentDialog.dataDelete(paymentList);
+                    break;
+                case "53":
+                    paymentDialog.dataOutput(paymentList);
+                    break;
+                case "61":
+                    personList = personDialog.dataInput(personList);
+                    break;
+                case "62":
+                    personList = personDialog.dataDelete(personList);
+                    break;
+                case "63":
+                    personDialog.dataOutput(personList);
+                    break;
+                case "71":
+                    resourceList = resourceDialog.dataInput(resourceList);
+                    break;
+                case "72":
+                    resourceList = resourceDialog.dataDelete(resourceList);
+                    break;
+                case "73":
+                    resourceDialog.dataOutput(resourceList);
+                    break;
+                case "81":
+                    statisticsDialog.dataInput();
+                    break;
+                case "82":
+                    statisticsDialog.dataDelete();
+                    break;
+                case "83":
+                    statisticsDialog.dataOutput();
+                    break;
+
+            }
         }
-
-
-
 
         ////////////////////Person////////////////////
         CredentialType credentialType;

@@ -1,3 +1,6 @@
+import Person.Person;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class AuthenticationDialog {
@@ -25,7 +28,26 @@ public class AuthenticationDialog {
         }
 
     }
-    public void dataInput(){}
-    public void dataDelete(){}
+    public List<Person> dataInput(List<Person> personList){
+        System.out.println("Select a person to change the identifier");
+        for(int i=0; i < personList.size(); i++){
+            System.out.println(i + personList.get(i).getName() );
+        }
+        Scanner scanner12 = new Scanner(System.in);
+        String numberInput = scanner12.next();
+        int persIn = Integer.parseInt(numberInput);
+        Person person = personList.get(persIn);
+        System.out.println("Enter the new identifier");
+        Scanner scanner13 = new Scanner(System.in);
+        String identInput = scanner13.next();
+        person.setCredentialIdentifier(identInput);
+        personList.set(persIn,person);
+
+
+        return personList;
+    }
+    public void dataDelete(){
+
+    }
     public void dataOutput(){}
 }

@@ -15,6 +15,7 @@ public class PaymentDialog {
     private String menuOption;
 
     private PaymentType paymentType;
+    private List<Person> personListget;
 
     public PaymentDialog() {
         this.commandExecutor = new CommandExecutor();
@@ -90,8 +91,33 @@ public class PaymentDialog {
         commandExecutor.executeCommand("transactPayment",paycon1);
         Payment pay1 = ((PaymentController) paycon1).getPayment();
         paymentList.add(pay1);
+        int iSender = Integer.parseInt(senderInput);
+        int iReceiver = Integer.parseInt(receiverInput);
+        personList.set(iSender,((PaymentController)paycon1).getPersonSender());
+        personList.set(iReceiver,((PaymentController)paycon1).getPersonReceiver());
+        this.personListget = personList;
         return paymentList;
     }
-    public void dataDelete(){}
-    public void dataOutput(){}
+    public List<Payment> dataDelete(List<Payment> paymentList){
+        System.out.println("Please enter the number of the paymnet you want to delete");
+        for(int i=0; i < paymentList.size(); i++){
+            System.out.println(i +" "+ paymentList.get(i).getSender().getInhaber().getName() +" "+ paymentList.get(i).getDate() );
+        }
+        Scanner scanner14 = new Scanner(System.in);
+        String numberInput = scanner14.next();
+        paymentList.remove(Integer.parseInt(numberInput));
+        return paymentList;
+    }
+    public void dataOutput(List<Payment> paymentList){
+        System.out.println("Curren payments");
+        for(int i=0; i < paymentList.size(); i++){
+            System.out.println(i +" "+ paymentList.get(i).getSender().getInhaber().getName() +" "+ paymentList.get(i).getDate() );
+        }
+
+    }
+    public List<Person> getPersonList(){
+        return personListget;
+    }
 }
+
+
