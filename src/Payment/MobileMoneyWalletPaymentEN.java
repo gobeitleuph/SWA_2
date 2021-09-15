@@ -4,9 +4,10 @@ import Statistics.Visitor;
 
 import java.time.LocalDateTime;
 
-public class GoogleWalletPayment extends Payment{
+public class MobileMoneyWalletPaymentEN extends Payment {
 
-    public GoogleWalletPayment(Account pSender, Account pReceiver, int pValue) {
+
+    public MobileMoneyWalletPaymentEN(Account pSender, Account pReceiver, int pValue) {
         this.Sender = pSender;
         this.Receiver = pReceiver;
         this.Value = pValue;
@@ -23,12 +24,11 @@ public class GoogleWalletPayment extends Payment{
         this.Date = LocalDateTime.now();
         Sender.Saldo = Sender.Saldo - Value;
         Receiver.Saldo = Receiver.Saldo + Value;
-        System.out.println("Bezahlung wurde mit GoogleWallet am " + getDate() + " ausgeführt.");
-        System.out.println("Neuer Kontostand: " + Sender.getSaldo() + "€");
+        System.out.println("Payment was made with MobileMoneyWalletPayment on " + getDate() );
+        System.out.println("New balance: " + Sender.getSaldo() + "€");
 
         return true;
     }
-
     @Override
     public Account getReceiver(){
         return Receiver;
@@ -37,4 +37,5 @@ public class GoogleWalletPayment extends Payment{
     public Account getSender(){
         return Sender;
     }
+
 }

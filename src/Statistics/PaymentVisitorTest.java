@@ -17,7 +17,7 @@ public class PaymentVisitorTest {
     private PaymentService pms;
     private Person ps1;
     private Person ps2;
-    private PaymentType type = PaymentType.PayPal;
+    private PaymentType type = PaymentType.PayPalDE;
     private String pcredentialIdentifierInput ="goodPassword";
     PersonService personService;
     @BeforeEach
@@ -39,7 +39,7 @@ public class PaymentVisitorTest {
     @Test
     void canPaymentBeCompleted(){
 
-        Assertions.assertTrue(pms.payAmount(type, ps1, ps2, 200, pcredentialIdentifierInput));
+        Assertions.assertTrue(pms.payAmount(type, ps1, ps2, 200));
 
 
     }

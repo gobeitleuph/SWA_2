@@ -48,13 +48,14 @@ public class BookingService {
 	public void createGermanBooking(BookingBuilder bookingBuilder){
 
 		bookingBuilder.setHead("Buchung von"+ person.getName());
-		bookingBuilder.setBody("Deutscher Inhalt"+resource.getLabel());
+		bookingBuilder.setBody("Sie habe folgende Resource ausgewählt: "+resource.getLabel());
+		bookingBuilder.setBody("Vielen Dank");
 	}
 
 	public void createEnglishBooking(BookingBuilder bookingBuilder) {
 		bookingBuilder.setHead("Booking of "+ person.getName());
-		bookingBuilder.setBody("EnglischerInhalt");
-		bookingBuilder.setFooter("Regards "+ resource.getLabel());
+		bookingBuilder.setBody("You choosed the Resource: "+ resource.getLabel());
+		bookingBuilder.setFooter("Regards ");
 	}
 
 	public Booking getBooking() {

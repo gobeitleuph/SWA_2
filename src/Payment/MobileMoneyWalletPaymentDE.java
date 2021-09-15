@@ -5,10 +5,10 @@ import Statistics.Visitor;
 import java.time.LocalDateTime;
 
 
-public class MobileMoneyWalletPayment extends Payment{
+public class MobileMoneyWalletPaymentDE extends Payment{
 
 
-        public MobileMoneyWalletPayment(Account pSender, Account pReceiver, int pValue) {
+        public MobileMoneyWalletPaymentDE(Account pSender, Account pReceiver, int pValue) {
             this.Sender = pSender;
             this.Receiver = pReceiver;
             this.Value = pValue;

@@ -7,9 +7,13 @@ package Payment;
  * @created 25-Aug-2021 17:56:01
  */
 public enum PaymentType {
-	PayPal,
-	GoogleWallet,
-	MobileMoneyWallet;
+	PayPalDE,
+	PayPalEN,
+	GoogleWalletDE,
+	GoogleWalletEN,
+
+	MobileMoneyWalletDE,
+	MobileMoneyWalletEN;
 
 	public PaymentService m_PaymentService;
 

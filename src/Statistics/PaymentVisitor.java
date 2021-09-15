@@ -1,14 +1,15 @@
 package Statistics;
 
-import Payment.GoogleWalletPayment;
-import Payment.MobileMoneyWalletPayment;
-import Payment.PayPalPaymentEN;
-import Payment.PayPalPaymentDE;
+import Payment.*;
 
 public class PaymentVisitor implements Visitor {
 
     private int PayPalPaymentcountEN;
     private int PayPalPaymentcountDE;
+    private int GoogleWalletPaymentDEcountDE;
+    private int GoogleWalletPaymentENcountEN;
+    private int MobileMoneyWalletPaymentDE;
+    private int MobileMoneyWalletPaymentEN;
 
 //    private int countDE;
 //
@@ -18,7 +19,11 @@ public class PaymentVisitor implements Visitor {
 
 //
 
+    public void visit(PayPalPaymentDE payPalPayment) {
+        PayPalPaymentcountDE++;
+        System.out.println(PayPalPaymentcountDE);
 
+    }
 
     public void visit(PayPalPaymentEN payPalPaymentEN) {
         PayPalPaymentcountEN++;
@@ -26,20 +31,30 @@ public class PaymentVisitor implements Visitor {
 
     }
 
-    public void visit(PayPalPaymentDE payPalPayment) {
-        PayPalPaymentcountDE++;
-        System.out.println(PayPalPaymentcountEN);
-
-
+    @Override
+    public void visit(GoogleWalletPaymentDE googleWalletPaymentDE) {
+        GoogleWalletPaymentDEcountDE++;
+        System.out.println(GoogleWalletPaymentDEcountDE);
     }
 
     @Override
-    public void visit(GoogleWalletPayment googleWalletPayment) {
-
+    public void visit(GoogleWalletPaymentEN googleWalletPayment) {
+        GoogleWalletPaymentENcountEN++;
+        System.out.println(GoogleWalletPaymentENcountEN);
     }
 
     @Override
-    public void visit(MobileMoneyWalletPayment mobileMoneyWalletPayment) {
-
+    public void visit(MobileMoneyWalletPaymentDE mobileMoneyWalletPayment) {
+        MobileMoneyWalletPaymentDE++;
+        System.out.println(MobileMoneyWalletPaymentDE);
     }
+
+
+
+    public void visit(MobileMoneyWalletPaymentEN mobileMoneyWalletPayment) {
+        MobileMoneyWalletPaymentEN++;
+        System.out.println(MobileMoneyWalletPaymentEN);
+    }
+
+
 }

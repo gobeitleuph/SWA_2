@@ -14,7 +14,6 @@ public class StatisticsService {
 
 	}
 
-	public void finalize() throws Throwable {
 
-	}
+
 }//end StatisticsService

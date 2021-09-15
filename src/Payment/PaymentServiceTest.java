@@ -16,7 +16,7 @@ class PaymentServiceTest {
     private PaymentService pms;
     private Person ps1;
     private Person ps2;
-    private PaymentType type = PaymentType.PayPal;
+    private PaymentType type = PaymentType.PayPalDE;
     //private String pcredentialIdentifierInput ="goodPassword";
     PersonService personService;
     @BeforeEach

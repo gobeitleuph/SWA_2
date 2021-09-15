@@ -38,7 +38,15 @@ public class PaymentService {
 	private	Person pSender;
 	private Payment payment;
 
-	public void payWithPaypal(Person pSenderperson, Person pReceiver, int pvalue){
+	public void payWithPaypalDE(Person pSenderperson, Person pReceiver, int pvalue){
+		this.payment = new PayPalPaymentDE(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
+		//payment.auth.authenticateSubject(pSenderperson, pcredentialIdentifierInput);
+		payment.Commit();
+		this.pReceiver.setAccount(payment.getReceiver());
+		this.pSender.setAccount(payment.getSender());
+
+	}
+	public void payWithPaypalEN(Person pSenderperson, Person pReceiver, int pvalue){
 		this.payment = new PayPalPaymentEN(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
 		//payment.auth.authenticateSubject(pSenderperson, pcredentialIdentifierInput);
 		payment.Commit();
@@ -47,43 +55,76 @@ public class PaymentService {
 
 	}
 
-	public void payWithGoogle(Person pSenderperson, Person pReceiver, int pvalue){
-		this.payment = new GoogleWalletPayment(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
+	public void payWithGoogleDE(Person pSenderperson, Person pReceiver, int pvalue){
+		this.payment = new GoogleWalletPaymentDE(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
 		//payment.auth.authenticateSubject(pSenderperson, pcredentialIdentifierInput);
 		payment.Commit();
 		this.pReceiver.setAccount(payment.getReceiver());
 		this.pSender.setAccount(payment.getSender());
 	}
 
-	public void payWithMobile(Person pSenderperson, Person pReceiver, int pvalue){
+	public void payWithGoogleEN(Person pSenderperson, Person pReceiver, int pvalue){
+		this.payment = new GoogleWalletPaymentEN(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
+		//payment.auth.authenticateSubject(pSenderperson, pcredentialIdentifierInput);
+		payment.Commit();
+		this.pReceiver.setAccount(payment.getReceiver());
+		this.pSender.setAccount(payment.getSender());
+	}
+
+	public void payWithMobileDE(Person pSenderperson, Person pReceiver, int pvalue){
+		this.payment = new PayPalPaymentDE(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
+		//payment.auth.authenticateSubject(pSenderperson, pcredentialIdentifierInput);
+		payment.Commit();
+		this.pReceiver.setAccount(payment.getReceiver());
+		this.pSender.setAccount(payment.getSender());
+	}
+
+	public void payWithMobileEN(Person pSenderperson, Person pReceiver, int pvalue){
 		this.payment = new PayPalPaymentEN(pSenderperson.getAccount(),pReceiver.getAccount(), pvalue);
 		//payment.auth.authenticateSubject(pSenderperson, pcredentialIdentifierInput);
 		payment.Commit();
 		this.pReceiver.setAccount(payment.getReceiver());
 		this.pSender.setAccount(payment.getSender());
 	}
+
+
+
+//	public boolean payAmount(PaymentType ptype,Person pSenderperson, Person pReceiver, int pvalue){
+//		this.pSender = pSenderperson;
+//		this.pReceiver = pReceiver;
 
 
 	public boolean payAmount(PaymentType ptype,Person pSenderperson, Person pReceiver, int pvalue){
-		this.pSender = pSenderperson;
-		this.pReceiver = pReceiver;
 
-
-	public boolean payAmount(PaymentType ptype,Person pSenderperson, Person pReceiver, int pvalue, String pcredentialIdentifierInput){
 		switch (ptype){
 
-			case PayPal :{
-				payWithPaypal(pSenderperson, pReceiver, pvalue);
+			case PayPalDE :{
+				payWithPaypalDE(pSenderperson, pReceiver, pvalue);
+				break;
+			}
+			case PayPalEN :{
+				payWithPaypalEN(pSenderperson, pReceiver, pvalue);
 				break;
 			}
 
-			case GoogleWallet:{
-				payWithGoogle(pSenderperson, pReceiver, pvalue);
+
+			case GoogleWalletDE:{
+				payWithGoogleDE(pSenderperson, pReceiver, pvalue);
 				break;
 			}
 
-			case MobileMoneyWallet:{
-				payWithMobile(pSenderperson, pReceiver, pvalue);
+			case GoogleWalletEN:{
+				payWithGoogleEN(pSenderperson, pReceiver, pvalue);
+				break;
+			}
+
+			case MobileMoneyWalletDE:{
+				payWithMobileDE(pSenderperson, pReceiver, pvalue);
+				break;
+			}
+
+			case MobileMoneyWalletEN:{
+				payWithMobileEN(pSenderperson, pReceiver, pvalue);
 				break;
 			}
 

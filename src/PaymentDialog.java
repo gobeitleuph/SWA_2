@@ -77,14 +77,25 @@ public class PaymentDialog {
 
         switch (paymentTypeInput){
             case"1":
-                this.paymentType =PaymentType.PayPal;
+                this.paymentType =PaymentType.PayPalDE;
                 break;
             case"2":
-                this.paymentType =PaymentType.GoogleWallet;
+                this.paymentType =PaymentType.GoogleWalletDE;
                 break;
             case"3":
-                this.paymentType =PaymentType.MobileMoneyWallet;
+                this.paymentType =PaymentType.MobileMoneyWalletDE;
                 break;
+
+            case"4":
+                this.paymentType =PaymentType.PayPalEN;
+                break;
+            case"5":
+                this.paymentType =PaymentType.GoogleWalletEN;
+                break;
+            case"6":
+                this.paymentType =PaymentType.MobileMoneyWalletEN;
+                break;
+
         }
 
         CommandController paycon1 = new PaymentController(paymentType, personSender, personReceiver, amount);

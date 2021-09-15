@@ -25,9 +25,9 @@ public class GermanBooking extends Booking{
     }
     public String print(){
         String info = "";
-        info += "Das ist der Header:"+ head +"\n";
-        info += "Das ist der body:"+ body +"\n";
-        info += "Das ist der footer:"+ footer + "\n";
+        info += "Header:"+ head +"\n";
+        info += "body:"+ body +"\n";
+        info += "footer:"+ footer + "\n";
         return info;
     }
 
