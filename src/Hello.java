@@ -68,9 +68,7 @@ public class Hello {
 
         //Content
         Folder folderm ;
-        Folder folderY ;
-        LocalDate.now().getMonth().getValue();
-        LocalDate.now().getYear();
+        Folder folderY = null;
 
         String year = Integer.toString(LocalDate.now().getYear());
         String targetNameY = year;
@@ -95,19 +93,13 @@ public class Hello {
                 break;
             }
             else{
-                contentList.add(folderm = new Folder (month));
+                CommandController contcon3 = new ContentController(folderm = new Folder (month), folderY);
+                commandExecutor.executeCommand("addContentToFolder",contcon3);
+                Content foldBack = ((ContentController) contcon3).getFolder();
+                contentList.add(foldBack);
             }
         }
 
-
-        Folder folder1 = new Folder("TestFolder");
-        File file1 = new File("TestFile");
-        //File kann Payment und Booking zugewiesen werden
-        CommandController contcon1 = new ContentController(file1, folder1);
-        commandExecutor.executeCommand("addContentToFolder",contcon1);
-        Content fold1 = ((ContentController) contcon1).getFolder();
-        System.out.println(fold1.getName());
-        List<Content> folde1list = ((Folder)fold1).getFolderContentList();
 
         UserDialog userDialog = new UserDialog();
         //BookingType language = userDialog.selectLanguage();
@@ -119,6 +111,11 @@ public class Hello {
             switch (menuOption){
                 case "1":
                     userDialog.carReservationDialog(bookingList,contentList,paymentList,personList,resourceList);
+                    bookingList = userDialog.getBookingList();
+                    contentList = userDialog.getContentList();
+                    paymentList = userDialog.getPaymentList();
+                    personList = userDialog.getPersonList();
+                    resourceList = userDialog.getResourceList();
                     break;
                 case "21":
                     boolean idResult = authenticationDialog.dataInput(personList);
@@ -139,13 +136,13 @@ public class Hello {
                     bookingDialog.dataOutput(bookingList);
                     break;
                 case "41":
-                    contentDialog.dataInput();
+                    contentDialog.dataInput(contentList);
                     break;
                 case "42":
-                    contentDialog.dataDelete();
+                    contentDialog.dataDelete(contentList);
                     break;
                 case "43":
-                    contentDialog.dataOutput();
+                    contentDialog.dataOutput(contentList);
                     break;
                 case "51":
                     paymentList = paymentDialog.dataInput(paymentList,personList);
@@ -187,107 +184,107 @@ public class Hello {
 
             }
         }
-
-        ////////////////////Person////////////////////
-        CredentialType credentialType;
-        PersonType personType;
-        String name;
-        String emailAddress;
-        int phoneNumber;
-        String surname;
-        LocalDate birthday;
-        int year;
-        int month;
-        int day;
-        String credentialIdentifier;
-
-        personType = PersonType.LegalPerson;
-        name = "Test";
-        emailAddress = "hallo@test.com";
-        phoneNumber = 012711111111;
-        credentialType = CredentialType.UserNamePasswordStrategy;
-        surname = "SurnameTest";
-        year = 2021;
-        month = 9;
-        day = 7;
-        birthday = LocalDate.of(year, month, day);
-        credentialIdentifier = "goodPassword";
-        CommandController perscon1 = new PersonController(personType, name, emailAddress, phoneNumber, credentialType, surname, birthday, credentialIdentifier);
-        commandExecutor.executeCommand("createPerson", perscon1);
-        Person pers1 = ((PersonController) perscon1).getPerson();
-        CommandController perscon3 = new PersonController(PersonType.LegalPerson, "NameTest", "hallo@test.com", 012711111111, CredentialType.UserNamePasswordStrategy, "SurnameTest", LocalDate.of(200, 8, 12), "goodPassword");
-        commandExecutor.executeCommand("createPerson", perscon3);
-        Person pers3 = ((PersonController) perscon2).getPerson();
-        System.out.println(pers1.getName());
-        System.out.println(pers3.getName());
-        ////////////////////Person End////////////////////
-
-        ////////////////////Resource////////////////////
-        String carLabel = "Carname";
-        BigDecimal carprice = new BigDecimal("500");
-        Boolean carAvailability = true;
-
-        ResourceSelection car;
-        car = new Car();
-        car.setLabel(carLabel);
-        car.setPrice(carprice);
-        car.setAvailability(carAvailability);
-        CommandController rescon1 = new ResourceController(car);
-        commandExecutor.executeCommand("selectResourceChildSeat",rescon1);
-        ResourceSelection res1 = ((ResourceController) rescon1).getCombination();
-        CommandController rescon2 = new ResourceController(res1);
-        commandExecutor.executeCommand("selectResourceSetTopBox",rescon2);
-        ResourceSelection res2 = ((ResourceController) rescon2).getCombination();
-        System.out.println(res1.getLabel());
-        System.out.println(res1.getPrice());
-        System.out.println(res2.getLabel());
-        System.out.println(res2.getPrice());
-        System.out.println(res2.getAvailability());
-        ////////////////////Resource End////////////////////
-
-        ////////////////////Payment////////////////////
-        PaymentType paymentType;
-        Person personSender;
-        Person personReceiver;
-        int value;
-        //String credentialIdentifierInput;
-        paymentType = PaymentType.PayPal;
-        personSender = pers1;
-        personReceiver = pers2;
-        value = 500;
-        //credentialIdentifierInput = "goodPassword";
-
-        CommandController paycon1 = new PaymentController(paymentType, personSender, personReceiver, value);
-        commandExecutor.executeCommand("transactPayment",paycon1);
-
-        ////////////////////Payment End////////////////////
-
-        ////////////////////Booking////////////////////
-        BookingType bookingType = BookingType.GermanBooking;
-        CommandController bookcon1 = new BookingController(pers1, res1, bookingType);
-        commandExecutor.executeCommand("creatBooking",bookcon1);
-        Booking booking1 = ((BookingController) bookcon1).getBooking();
-
-        System.out.println(booking1.print());
-        ////////////////////Booking End////////////////////
-
-        ////////////////////Content////////////////////
-        Folder folder1 = new Folder("TestFolder");
-        File file1 = new File("TestFile");
-        //File kann Payment und Booking zugewiesen werden
-        CommandController contcon1 = new ContentController(file1, folder1);
-        commandExecutor.executeCommand("addContentToFolder",contcon1);
-        Content fold1 = ((ContentController) contcon1).getFolder();
-        System.out.println(fold1.getName());
-        List<Content> folde1list = ((Folder)fold1).getFolderContentList();
-        //System.out.println(folde1list);
-        ////////////////////Content End////////////////////
-
-        //Authentication//
-        String credentialIdentifierInput = "goodPassword";
-        CommandController authcon1 = new AuthenticationController(pers1, credentialIdentifierInput);
-        commandExecutor.executeCommand("authenticatePerson",authcon1);
-        boolean authResult = ((AuthenticationController) authcon1).getAuthentication();
+//
+//        ////////////////////Person////////////////////
+//        CredentialType credentialType;
+//        PersonType personType;
+//        String name;
+//        String emailAddress;
+//        int phoneNumber;
+//        String surname;
+//        LocalDate birthday;
+//        int yearr;
+//        int monthh;
+//        int day;
+//        String credentialIdentifier;
+//
+//        personType = PersonType.LegalPerson;
+//        name = "Test";
+//        emailAddress = "hallo@test.com";
+//        phoneNumber = 012711111111;
+//        credentialType = CredentialType.UserNamePasswordStrategy;
+//        surname = "SurnameTest";
+//        yearr = 2021;
+//        monthh = 9;
+//        day = 7;
+//        birthday = LocalDate.of(yearr, monthh, day);
+//        credentialIdentifier = "goodPassword";
+//        CommandController perscon1 = new PersonController(personType, name, emailAddress, phoneNumber, credentialType, surname, birthday, credentialIdentifier);
+//        commandExecutor.executeCommand("createPerson", perscon1);
+//        Person pers1 = ((PersonController) perscon1).getPerson();
+//        CommandController perscon3 = new PersonController(PersonType.LegalPerson, "NameTest", "hallo@test.com", 012711111111, CredentialType.UserNamePasswordStrategy, "SurnameTest", LocalDate.of(200, 8, 12), "goodPassword");
+//        commandExecutor.executeCommand("createPerson", perscon3);
+//        Person pers3 = ((PersonController) perscon2).getPerson();
+//        System.out.println(pers1.getName());
+//        System.out.println(pers3.getName());
+//        ////////////////////Person End////////////////////
+//
+//        ////////////////////Resource////////////////////
+//        String carLabel = "Carname";
+//        BigDecimal carprice = new BigDecimal("500");
+//        Boolean carAvailability = true;
+//
+//        ResourceSelection car;
+//        car = new Car();
+//        car.setLabel(carLabel);
+//        car.setPrice(carprice);
+//        car.setAvailability(carAvailability);
+//        CommandController rescon1 = new ResourceController(car);
+//        commandExecutor.executeCommand("selectResourceChildSeat",rescon1);
+//        ResourceSelection res1 = ((ResourceController) rescon1).getCombination();
+//        CommandController rescon2 = new ResourceController(res1);
+//        commandExecutor.executeCommand("selectResourceSetTopBox",rescon2);
+//        ResourceSelection res2 = ((ResourceController) rescon2).getCombination();
+//        System.out.println(res1.getLabel());
+//        System.out.println(res1.getPrice());
+//        System.out.println(res2.getLabel());
+//        System.out.println(res2.getPrice());
+//        System.out.println(res2.getAvailability());
+//        ////////////////////Resource End////////////////////
+//
+//        ////////////////////Payment////////////////////
+//        PaymentType paymentType;
+//        Person personSender;
+//        Person personReceiver;
+//        int value;
+//        //String credentialIdentifierInput;
+//        paymentType = PaymentType.PayPal;
+//        personSender = pers1;
+//        personReceiver = pers2;
+//        value = 500;
+//        //credentialIdentifierInput = "goodPassword";
+//
+//        CommandController paycon1 = new PaymentController(paymentType, personSender, personReceiver, value);
+//        commandExecutor.executeCommand("transactPayment",paycon1);
+//
+//        ////////////////////Payment End////////////////////
+//
+//        ////////////////////Booking////////////////////
+//        BookingType bookingType = BookingType.GermanBooking;
+//        CommandController bookcon1 = new BookingController(pers1, res1, bookingType);
+//        commandExecutor.executeCommand("creatBooking",bookcon1);
+//        Booking booking1 = ((BookingController) bookcon1).getBooking();
+//
+//        System.out.println(booking1.print());
+//        ////////////////////Booking End////////////////////
+//
+//        ////////////////////Content////////////////////
+//        Folder folder1 = new Folder("TestFolder");
+//        File file1 = new File("TestFile");
+//        //File kann Payment und Booking zugewiesen werden
+//        CommandController contcon1 = new ContentController(file1, folder1);
+//        commandExecutor.executeCommand("addContentToFolder",contcon1);
+//        Content fold1 = ((ContentController) contcon1).getFolder();
+//        System.out.println(fold1.getName());
+//        List<Content> folde1list = ((Folder)fold1).getFolderContentList();
+//        //System.out.println(folde1list);
+//        ////////////////////Content End////////////////////
+//
+//        //Authentication//
+//        String credentialIdentifierInput = "goodPassword";
+//        CommandController authcon1 = new AuthenticationController(pers1, credentialIdentifierInput);
+//        commandExecutor.executeCommand("authenticatePerson",authcon1);
+//        boolean authResult = ((AuthenticationController) authcon1).getAuthentication();
 
 
     }
