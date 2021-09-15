@@ -22,8 +22,85 @@ public class Hello {
 
         UserDialog userDialog = new UserDialog();
         BookingType language = userDialog.selectLanguage();
-        userDialog.showMenu(language);
+        String menuOption = userDialog.showMenu(language);
+        AuthenticationDialog authenticationDialog = new AuthenticationDialog();
+        BookingDialog bookingDialog = new BookingDialog();
+        ContentDialog contentDialog = new ContentDialog();
+        PaymentDialog paymentDialog = new PaymentDialog();
+        PersonDialog personDialog = new PersonDialog();
+        ResourceDialog resourceDialog = new ResourceDialog();
+        StatisticsDialog statisticsDialog = new StatisticsDialog();
 
+
+        switch (menuOption){
+            case "1":
+                userDialog.carReservationDialog(language);
+                break;
+            case "21":
+                authenticationDialog.dataInput();
+                break;
+            case "22":
+                authenticationDialog.dataDelete();
+                break;
+            case "23":
+                authenticationDialog.dataOutput();
+                break;
+            case "31":
+                bookingDialog.dataInput();
+                break;
+            case "32":
+                bookingDialog.dataDelete();
+                break;
+            case "33":
+                bookingDialog.dataOutput();
+                break;
+            case "41":
+                contentDialog.dataInput();
+                break;
+            case "42":
+                contentDialog.dataDelete();
+                break;
+            case "43":
+                contentDialog.dataOutput();
+                break;
+            case "51":
+                paymentDialog.dataInput();
+                break;
+            case "52":
+                paymentDialog.dataDelete();
+                break;
+            case "53":
+                paymentDialog.dataOutput();
+                break;
+            case "61":
+                personDialog.dataInput();
+                break;
+            case "62":
+                personDialog.dataDelete();
+                break;
+            case "63":
+                personDialog.dataOutput();
+                break;
+            case "71":
+                resourceDialog.dataInput();
+                break;
+            case "72":
+                resourceDialog.dataDelete();
+                break;
+            case "73":
+                resourceDialog.dataOutput();
+                break;
+            case "81":
+                statisticsDialog.dataInput();
+                break;
+            case "82":
+                statisticsDialog.dataDelete();
+                break;
+            case "83":
+                statisticsDialog.dataOutput();
+                break;
+
+        }
 
         CommandExecutor commandExecutor = new CommandExecutor();
 
